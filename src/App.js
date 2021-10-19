@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Navbar/>
       <Seprator/>
-      <div className="container-fluid" id="main">
+      <div className="container-fluid py-2" id="main">
         <div className="row">
           <MapArea/>
           <Uutiset/>

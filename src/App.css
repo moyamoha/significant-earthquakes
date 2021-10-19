@@ -31,5 +31,9 @@ body {
 }
 
 #main {
-  
+  height: 100vh;
+}
+
+.kortti {
+  border-radius: 10px;
 }
