@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import Data from "./../data/significant-earthquake-database.json";
+
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -14,10 +15,12 @@ L.Icon.Default.mergeOptions({
 
 function MyMap() {
     
+   
+
     return (
         <MapContainer className="map"
             center={position}
-            zoom={5}
+            zoom={2}
             style={{ height: 500, width: "50%" }}
 
         >
