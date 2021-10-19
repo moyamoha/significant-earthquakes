@@ -25,7 +25,11 @@ body {
   background-color: #ffc107;
 }
 #MyMap {
-display: "flex";
-align-items: "center";
-justify-content: "center";
+  display: "flex";
+  align-items: "center";
+  justify-content: "center";
+}
+
+#main {
+  
 }

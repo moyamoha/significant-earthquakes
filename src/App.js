@@ -13,8 +13,12 @@ function App() {
     <div className="App">
       <Navbar/>
       <Seprator/>
-      <MapArea/>
-      <Uutiset/>
+      <div className="container-fluid" id="main">
+        <div className="row">
+          <MapArea/>
+          <Uutiset/>
+        </div>
+      </div>
     </div>
   );
 }
