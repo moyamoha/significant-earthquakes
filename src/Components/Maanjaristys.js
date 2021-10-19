@@ -9,12 +9,9 @@ const Maanjaristys = ({ jaristys, show }) =>
 
 
      (
-         <div className="row" >
-             <div onClick={() => { show(jaristys.fields.i_d); }} className={'col-md-2'} style={{ backgroundColor: 'beige', cursor: 'pointer' }} >
-                 <p ><small>{jaristys.fields.location_name}</small></p>
-
-             </div>
-         </div>
+        <div onClick={() => { show(jaristys.fields.i_d); }}>
+            <p ><small>{jaristys.fields.location_name.toLowerCase()}</small></p>
+        </div>
     );
 
 export default Maanjaristys;

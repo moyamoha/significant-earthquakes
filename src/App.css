@@ -20,20 +20,21 @@ body {
 }
 
 #seprator {
-  height: 10px;
+  height: 5px;
   margin-top: 0;
   background-color: #ffc107;
 }
-#MyMap {
-  display: "flex";
-  align-items: "center";
-  justify-content: "center";
-}
+
 
 #main {
   height: 100vh;
 }
 
-.kortti {
-  border-radius: 10px;
+.kortti .map {
+  border-radius: 25px !important;
+  transition: all .5s ease-in-out;
+}
+
+.kortti:hover {
+  transform: translateY(-3px);
 }

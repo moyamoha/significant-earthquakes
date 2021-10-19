@@ -18,20 +18,14 @@ function MyMap() {
    
 
     return (
-        <MapContainer className="map w-100"
-            center={position}
-            zoom={2}
-            style={{ height: 500, width: "50%" }}
-
-        >
+        <MapContainer className="map col-9 w-100" center={position} zoom={2} style={{height:"500px"}}>
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-        
-        <Marker position = {position}>
+            <Marker position = {position}>
 
-        </Marker>
+            </Marker>
         </MapContainer>
     )
 

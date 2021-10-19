@@ -1,5 +1,4 @@
 import React from 'react';
-// import Maanjaristys from './Maanjaristys'
 import Maanjaristys from './Maanjaristys';
 
 // esimerkkidataa
@@ -109,8 +108,8 @@ const Maanjaristykset = ({ quakes, show }) => {
 
 
     return (<div className="col-2">
-        {quakes.map(jar => <Maanjaristys key={jar.recordid} jaristys={jar} show={show} />)}
-    </div>
+            {quakes.map(jar =><Maanjaristys key={jar.recordid} jaristys={jar} show={show} />)}
+        </div>
     );
 };
 
