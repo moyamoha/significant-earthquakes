@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  margin: 0;
+}
+
+#top-nav div {
+  background-color: #2c2c2c;
+}
+
+.nav-link {
+  color: rgb(255, 255, 255, .75) !important;
+  font-size: 1.05rem;
+  
+}
+
+.nav-link:hover {
+  color: white !important;
+}
+
+#seprator {
+  height: 10px;
+  margin-top: 0;
+  background-color: #ffc107;
+}
+#MyMap {
+display: "flex";
+align-items: "center";
+justify-content: "center";
+}
