@@ -18,7 +18,7 @@ function MyMap() {
    
 
     return (
-        <MapContainer className="map"
+        <MapContainer className="map w-100"
             center={position}
             zoom={2}
             style={{ height: 500, width: "50%" }}
