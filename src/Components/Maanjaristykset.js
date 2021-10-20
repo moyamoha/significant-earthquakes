@@ -1,9 +1,6 @@
 import React from 'react';
 import Maanjaristys from './Maanjaristys';
 
-<<<<<<< HEAD
-const Maanjaristykset = ({ quakes, onChange}) => {
-=======
 // esimerkkidataa
 /* const testijaristykset = [
     {
@@ -90,7 +87,6 @@ const Maanjaristykset = ({ quakes, onChange}) => {
 
 
 const Maanjaristykset = ({ quakes, show }) => {
->>>>>>> 0be6b182fdb2fa99a9b9f99123903811bd78d6a5
     // const json = '{"result":true, "count":42}';
     // const obj = JSON.parse(json);
     // console.log(obj);
@@ -111,14 +107,8 @@ const Maanjaristykset = ({ quakes, show }) => {
     });
 
 
-<<<<<<< HEAD
-    return (
-        <div className="col-2">
-            {quakes.map(jar =><Maanjaristys key={jar.recordid} quakes={jar} show={onChange} />)}
-=======
     return (<div className="col-2">
             {quakes.map(jar =><Maanjaristys key={jar.recordid} jaristys={jar} show={show} />)}
->>>>>>> 0be6b182fdb2fa99a9b9f99123903811bd78d6a5
         </div>
     );
 };
