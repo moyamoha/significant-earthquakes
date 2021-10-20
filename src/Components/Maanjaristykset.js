@@ -2,7 +2,7 @@ import React from 'react';
 import Maanjaristys from './Maanjaristys';
 
 const Maanjaristykset = ({ quakes, show }) => {
-    quakes.sort((a, b) => a.localeCompare(b, 'en'));
+    quakes.sort((a, b) => a.fields.country.localeCompare(b.fields.country, 'en'));
 
     return (<div className="col-2">
             {quakes.map(jar =><Maanjaristys key={jar.recordid} jaristys={jar} show={show} />)}
