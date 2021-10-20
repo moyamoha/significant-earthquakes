@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import Maanjaristykset from './Maanjaristykset';
-import Data from './../data/significant-earthquake-database.json'
+import MapArea from './MapArea';
+import Uutiset from './Uutiset';
+import Data from './../data/significant-earthquake-database.json';
+import SampleData from './../data/earthquake_cut.json';
 
 
 export default function Main() {
@@ -8,7 +11,7 @@ export default function Main() {
     return (
         <div className="container-fluid pt-4" id="main">
             <div className="row">
-                <Maanjaristykset quakes={Data} onClick={setQuake}/> 
+                <Maanjaristykset quakes={SampleData} onClick={setQuake}/> 
                 <MapArea quake={currQuack}/>
                 <Uutiset quake={currQuack}/>
             </div>
