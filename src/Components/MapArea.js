@@ -7,8 +7,8 @@ import Tiedot from './Tiedot';
 export default function MapArea() {
    
     return (
-        <div className="col-8">
-            <div className="d-flex flex-column px-3" id="maparea" >
+        <div className="col-8 maparea">
+            <div className="d-flex flex-column">
                 <MyMap />
                 <hr></hr>
                 <Tiedot />

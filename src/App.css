@@ -2,6 +2,7 @@
 
 body {
   margin: 0;
+  background-color: #f6f8fb;
 }
 
 #top-nav div {
@@ -29,15 +30,14 @@ body {
   height: 100vh;
 }
 
-.kortti .map {
-  border-radius: 25px !important; /* Ei toiminut, Miksi?*/
-  transition: all .5s ease-in-out;
+.maparea {
+  background-color: white;
+  border-radius: 15px;
+}
+.kortti, .map {
+  border-radius: 10px;
 }
 
-.kortti:hover {
-  transform: translateY(-3px);
-}
-
-.uutispalkki list-area {
-  background-color: #ede8e8;
+.uutispalkki {
+  overflow-y: scroll;
 }
