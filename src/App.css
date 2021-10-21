@@ -1,6 +1,5 @@
 
 
-
 body {
   margin: 0;
 }
@@ -31,10 +30,14 @@ body {
 }
 
 .kortti .map {
-  border-radius: 25px !important;
+  border-radius: 25px !important; /* Ei toiminut, Miksi?*/
   transition: all .5s ease-in-out;
 }
 
 .kortti:hover {
   transform: translateY(-3px);
+}
+
+.uutispalkki list-area {
+  background-color: #ede8e8;
 }
