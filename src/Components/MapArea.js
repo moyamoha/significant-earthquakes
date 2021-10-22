@@ -4,12 +4,12 @@ import Tiedot from './Tiedot';
 
 
 
-export default function MapArea( {quake}) {
+export default function MapArea( {quake, changeQuake}) {
    
     return (
         <div className="col-8 maparea">
             <div className="d-flex flex-column">
-                <MyMap />
+                <MyMap setCurrentQuake={changeQuake}/>
                 <hr></hr>
                 <Tiedot quake={quake}/>
             </div>

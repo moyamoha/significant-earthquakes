@@ -15,7 +15,7 @@ export default function Main() {
         <div className="container-fluid pt-3" id="main">
             <div className="row">
                 <Maanjaristykset onChangeQuake={changeQuake}/> 
-                <MapArea quake={currQuack}/>
+                <MapArea quake={currQuack} changeQuake={changeQuake}/>
                 <Uutiset quake={currQuack}/>
             </div>
       </div>

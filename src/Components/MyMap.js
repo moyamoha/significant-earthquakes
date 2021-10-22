@@ -17,7 +17,7 @@ L.Icon.Default.mergeOptions({
 
 
 
-function MyMap() {
+function MyMap({setCurrentQuake}) {
     
     function lisaa(){
        return( filtered.map(piste => (
@@ -27,7 +27,7 @@ function MyMap() {
             key = {piste.fields.id}
              eventHandlers={{
                  
-                 //click: () => Paivita(piste)
+                 click: () => setCurrentQuake(piste)
                }}
                
              position = {piste.fields.coordinates}
