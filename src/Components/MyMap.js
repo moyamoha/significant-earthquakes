@@ -1,7 +1,7 @@
-import React,{onClick}  from "react";
-import { MapContainer, Marker, TileLayer , Popup,useMapEvents,MapConsumer} from "react-leaflet";
+import React  from "react";
+import { MapContainer, Marker, TileLayer , Popup,useMap} from "react-leaflet";
 import Data from "./../data/significant-earthquake-database.json";
-
+import geo from "./../data/geo.json"
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -19,32 +19,7 @@ L.Icon.Default.mergeOptions({
 
 function MyMap({setCurrentQuake}) {
     
-    function lisaa(){
-       return( filtered.map(piste => (
-                
-            <Marker 
-             
-            key = {piste.fields.id}
-             eventHandlers={{
-                 
-                 click: () => setCurrentQuake(piste)
-               }}
-               
-             position = {piste.fields.coordinates}
-             >
-                 
-                     
-             <Popup  >
-                 
-                 {piste.fields.country}  
-                 
-                 
-             </Popup>
-               
-        </Marker>
-       
-         ))
-       )}
+    
     
     function Paivita(piste){
         console.log( piste.fields.country)
@@ -58,9 +33,30 @@ function MyMap({setCurrentQuake}) {
    
        
 
-const filtered = Data.filter(piste => piste.fields.intensity >10 &&piste.fields.coordinates !== undefined )
+//const filtered = Data.filter(piste => piste.fields.intensity >10 &&piste.fields.coordinates !== undefined )
 
 
+
+function Pisteet() {
+    const map = useMap();
+    
+    
+    var myLayer = L.geoJSON(geo,{filter:suodatin}).addTo(map);
+     function suodatin(jaristys){
+         if(jaristys.properties.eq_primary >8) return true
+        
+     }
+     
+
+     
+     
+
+
+
+    return null
+  }
+    
+   
     return (
         <MapContainer   className="map col-9 w-100" center={position} zoom={5} style={{height:"500px"}}>
             <TileLayer
@@ -68,8 +64,8 @@ const filtered = Data.filter(piste => piste.fields.intensity >10 &&piste.fields.
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                
             />
-            {lisaa()}
-
+            
+        <Pisteet/>
 
 
         </MapContainer>
