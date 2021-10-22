@@ -18,7 +18,7 @@ function MyMap() {
    
 
     return (
-        <div className="mx-3 mt-3">
+        <div className="mx-3 mt-3 px-4">
             <MapContainer className="map col-9 w-100" center={position} zoom={2} style={{height:"500px"}}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

@@ -1,8 +1,8 @@
 import React from 'react';
 import Maanjaristys from './Maanjaristys';
-import './../../src/App.css';
+/* s */
 
-const Maanjaristykset = ({ quakes, show }) => {
+const Maanjaristykset = ({show }) => {
     quakes.sort((a, b) => a.fields.location_name.localeCompare(b.fields.location_name, 'en'));
 
     return (<div className="col-2 listapalkki">
