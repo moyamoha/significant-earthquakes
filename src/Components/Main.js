@@ -8,10 +8,13 @@ import SampleData from './../data/earthquake_cut.json';
 
 export default function Main() {
     const [currQuack, setQuake] = useState(() => Data[0]);
+    const changeQuake = (jar) => {
+        setQuake(jar)
+    }
     return (
         <div className="container-fluid pt-3" id="main">
             <div className="row">
-                <Maanjaristykset quakes={SampleData} onClick={setQuake}/> 
+                <Maanjaristykset onChangeQuake={changeQuake}/> 
                 <MapArea quake={currQuack}/>
                 <Uutiset quake={currQuack}/>
             </div>

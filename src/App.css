@@ -8,8 +8,14 @@
 }
 .kortti, .map {
   border-radius: 10px;
+  transition: all .4s ease-in-out;
+}
+.kortti:hover {
+  background-color: #ccc;
+  cursor: pointer;
 }
 
 .uutispalkki {
   overflow-y: scroll;
+  height: 80vh;
 }

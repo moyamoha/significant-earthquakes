@@ -1,12 +1,12 @@
 import React from 'react';
 import Maanjaristys from './Maanjaristys';
-/* s */
+import sampleData from './/../data/earthquake_cut.json'
 
-const Maanjaristykset = ({show }) => {
-    quakes.sort((a, b) => a.fields.location_name.localeCompare(b.fields.location_name, 'en'));
+const Maanjaristykset = ({onChangeQuake}) => {
+    sampleData.sort((a, b) => a.fields.location_name.localeCompare(b.fields.location_name, 'en'));
 
     return (<div className="col-2 listapalkki">
-            {quakes.map(jar =><Maanjaristys key={jar.recordid} jaristys={jar} show={show} />)}
+            {sampleData.map(jar =><Maanjaristys key={jar.recordid} jaristys={jar} clickFunc={onChangeQuake} />)}
         </div>
     );
 };
