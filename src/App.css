@@ -17,5 +17,6 @@
 
 .uutispalkki {
   overflow-y: scroll;
-  height: 80vh;
+  padding-top: 10px;
+  height: 85vh;
 }
