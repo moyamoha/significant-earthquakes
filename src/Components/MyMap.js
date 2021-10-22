@@ -17,62 +17,36 @@ L.Icon.Default.mergeOptions({
 
 
 
-function MyMap({setCurrentQuake}) {
+function MyMap({data, setCurrentQuake}) {
     
     function lisaa(){
-       return( filtered.map(piste => (
+       return( data.map(piste => (
                 
             <Marker 
              
             key = {piste.fields.id}
              eventHandlers={{
-                 
                  click: () => setCurrentQuake(piste)
                }}
                
              position = {piste.fields.coordinates}
              >
-                 
-                     
-             <Popup  >
-                 
-                 {piste.fields.country}  
-                 
-                 
-             </Popup>
-               
-        </Marker>
+                <Popup>{piste.fields.country}</Popup>
+            </Marker>
        
          ))
        )}
     
-    function Paivita(piste){
-        console.log( piste.fields.country)
-    
-                          document.getElementById("sijainti").textContent = " " +  piste.fields.country;
-                          document.getElementById("voimakkuus").textContent = " " + piste.fields.eq_primary;
-                          document.getElementById("ajankohta").textContent = " " + piste.fields.year+"."+piste.fields.month+"."+piste.fields.day;
-    }
-      
-
-   
-       
-
-const filtered = Data.filter(piste => piste.fields.intensity >10 &&piste.fields.coordinates !== undefined )
-
-
     return (
-        <MapContainer   className="map col-9 w-100" center={position} zoom={5} style={{height:"500px"}}>
-            <TileLayer
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-               
-            />
-            {lisaa()}
-
-
-
-        </MapContainer>
+        <div className="px-5 pt-4 pb-3">
+            <MapContainer   className="map col-9 w-100" center={position} zoom={5} style={{height:"500px"}}>
+                <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {lisaa()}
+            </MapContainer>
+        </div>
     )
 
 }
