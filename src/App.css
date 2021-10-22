@@ -20,3 +20,13 @@
   padding-top: 10px;
   height: 85vh;
 }
+
+.linkki {
+  color:blue;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.linkki:hover {
+  text-decoration: underline;
+}
