@@ -18,15 +18,17 @@ function MyMap() {
    
 
     return (
-        <MapContainer className="map col-9 w-100" center={position} zoom={2} style={{height:"500px"}}>
-            <TileLayer
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position = {position}>
+        <div className="mx-3 mt-3 px-4">
+            <MapContainer className="map col-9 w-100" center={position} zoom={2} style={{height:"500px"}}>
+                <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position = {position}>
 
-            </Marker>
-        </MapContainer>
+                </Marker>
+            </MapContainer>
+        </div>
     )
 
 }

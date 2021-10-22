@@ -1,15 +1,11 @@
 import React from 'react';
 
-
-const Maanjaristys = ({ jaristys, show }) =>
-
-    /*  const klikattu = (e) => {
-        console.log(show)
-    } */
-
+const Maanjaristys = ({ jaristys, clickFunc }) =>
 
      (
-        <div onClick={() => { show(jaristys.fields.i_d); }}>
+        <div onClick={() => {
+            clickFunc(jaristys)
+        }}>
             <p ><small>{jaristys.fields.location_name.toLowerCase()}</small></p>
         </div>
     );

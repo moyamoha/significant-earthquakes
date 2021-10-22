@@ -1,40 +1,22 @@
-
-
-
-body {
-  margin: 0;
-}
-
-#top-nav div {
-  background-color: #2c2c2c;
-}
-
-.nav-link {
-  color: rgb(255, 255, 255, .75) !important;
-  font-size: 1.05rem;
-  
-}
-
-.nav-link:hover {
-  color: white !important;
-}
-
-#seprator {
-  height: 5px;
-  margin-top: 0;
-  background-color: #ffc107;
-}
-
-
 #main {
   height: 100vh;
 }
 
-.kortti .map {
-  border-radius: 25px !important;
-  transition: all .5s ease-in-out;
+.maparea {
+  background-color: white;
+  border-radius: 15px;
+}
+.kortti, .map {
+  border-radius: 10px;
+  transition: all .4s ease-in-out;
+}
+.kortti:hover {
+  background-color: #ccc;
+  cursor: pointer;
 }
 
-.kortti:hover {
-  transform: translateY(-3px);
+.uutispalkki {
+  overflow-y: scroll;
+  padding-top: 10px;
+  height: 85vh;
 }
