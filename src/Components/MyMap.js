@@ -27,7 +27,7 @@ function MyMap() {
             key = {piste.fields.id}
              eventHandlers={{
                  
-                 click: () => Paivita(piste)
+                 //click: () => Paivita(piste)
                }}
                
              position = {piste.fields.coordinates}
