@@ -1,7 +1,7 @@
 import React from 'react';
 import sampleData from '../data/earthquake_cut.json'
 
-const FilterPalkki = ({changeData}) => {
+const FilterPalkki = ({data, changeData}) => {
    
     const filterData = () => {
         // Tässä filteroidaan dataa käyttäjän asettamien ehtojen perusteella
