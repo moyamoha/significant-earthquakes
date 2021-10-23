@@ -18,20 +18,12 @@ L.Icon.Default.mergeOptions({
 
 
 function MyMap({filterFunc, setCurrentQuake}) {
-    
+    let data = Array.from(Data).filter(filterFunc);
     function lisaa(){
-       return( Data.map(piste => (
+       return( data.map(x => (
                 
-            <Marker 
-             
-            /* key = {piste.fields.id} */
-             eventHandlers={{
-                 click: () => setCurrentQuake(piste)
-               }}
-               
-             position = {piste.fields.coordinates}
-             >
-                <Popup>{piste.fields.country}</Popup>
+            <Marker onClick={() => setCurrentQuake(x)} position = {x.fields.coordinates}>
+                <Popup>{x.fields.country}</Popup>
             </Marker>
        
          ))
