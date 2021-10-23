@@ -17,7 +17,7 @@ L.Icon.Default.mergeOptions({
 
 
 
-function MyMap({data, setCurrentQuake}) {
+function MyMap({filterFunc, setCurrentQuake}) {
     
     function lisaa(){
        return( Data.map(piste => (
