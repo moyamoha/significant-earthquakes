@@ -1,7 +1,7 @@
-import React,{onClick}  from "react";
-import { MapContainer, Marker, TileLayer , Popup,useMapEvents,MapConsumer} from "react-leaflet";
+import React, {useState}  from "react";
+import { MapContainer, TileLayer ,useMap} from "react-leaflet";
 import Data from "./../data/significant-earthquake-database.json";
-
+import geo from "./../data/geo.json"
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -18,26 +18,39 @@ L.Icon.Default.mergeOptions({
 
 
 function MyMap({filterFunc, setCurrentQuake}) {
-    let data = Array.from(Data).filter(filterFunc);
-    function lisaa(){
-       return( data.map(x => (
-                
-            <Marker onClick={() => setCurrentQuake(x)} position = {x.fields.coordinates}>
-                <Popup>{x.fields.country}</Popup>
-            </Marker>
-       
-         ))
-       )}
+    let data = geo.features.filter(filterFunc);
+    let num = data.length;
+    function Pisteet() {
+        const map = useMap();
+        const clicked = (e) => {
+            setCurrentQuake(e.target.feature)
+        }
+        var myLayer = L.geoJSON(data,{
+            filter:filterFunc,
+            onEachFeature: function (feature, layer) {
+                layer.on({
+                    click: clicked,
+                })
+            }
+        }).bindPopup(
+            function (layer) {
+                return layer.feature.properties.country;
+            }
+        ).addTo(map);
+        return null;
+    }
     
+   
     return (
-        <div className="px-5 pt-4 pb-3">
+        <div className="px-4 mt-3">
             <MapContainer   className="map col-9 w-100" center={position} zoom={5} style={{height:"500px"}}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {lisaa()}
+                <Pisteet/>
             </MapContainer>
+            <div>{num}</div>
         </div>
     )
 

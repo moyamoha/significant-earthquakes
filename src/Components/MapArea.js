@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import MyMap from './MyMap';
 import Tiedot from './Tiedot';
-import Data from './../data/significant-earthquake-database.json';
-
-
 
 export default function MapArea( {quake,filterFunction, changeQuake}) {
    
