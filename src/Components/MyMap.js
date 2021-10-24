@@ -1,5 +1,5 @@
 import React, {useState}  from "react";
-import { MapContainer, useMap} from "react-leaflet";
+import { MapContainer, Marker, TileLayer ,useMap} from "react-leaflet";
 import Data from "./../data/significant-earthquake-database.json";
 import geo from "./../data/geo.json"
 import 'leaflet/dist/leaflet.css';
@@ -17,7 +17,7 @@ L.Icon.Default.mergeOptions({
 
 
 
-function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
+function MyMap({changed, filterObj, setCurrentQuake}) {
     let data = geo.features.filter(item => {
         if (filterObj.all) return true;
         else {
@@ -26,36 +26,37 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
             item.properties.year >= filterObj.year
         }
     });
+    console.log("rendered MyMap")
     let num = data.length;
-
-    function Pisteet({changed, setChanged}) {
-        const [reload, setReload] = useState(() => false)
+    function Pisteet({changed}) {
         const map = useMap();
         const clicked = (e) => {
             setCurrentQuake(e.target.feature)
         }
         if (changed) {
             map.eachLayer(function (l) {
-                l.remove()
+                map.removeLayer(l)
             })
-            setChanged(false)
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+        } else {
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
         }
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
         let myLayer = L.geoJSON(data,{
             onEachFeature: function (feature, layer) {
                 layer.on({
                     click: clicked,
                 })
-                layer.bindPopup(function (layer) {
-                    return layer.feature.properties.country;
-                })
             }
-        }).addTo(map); 
-        
-
-
+        }).bindPopup(
+            function (layer) {
+                return layer.feature.properties.country;
+            }
+        ).addTo(map);
+        console.log(myLayer)
         return null;
     }
     
@@ -63,7 +64,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
     return (
         <div className="px-4 mt-3">
             <MapContainer   className="map col-9 w-100" center={position} zoom={1} style={{height:"500px"}}>
-                <Pisteet changed={changed} setChanged={setChanged}/>
+                <Pisteet changed={changed}/>
             </MapContainer>
             <div>{num}</div>
         </div>
