@@ -27,7 +27,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
     });
     console.log(data)
     let num = data.length;
-    let position = [...data[0].geometry.coordinates].reverse()
+    let position = data.length > 0 ? [...data[0].geometry.coordinates].reverse() : [0,0]
 
     function Pisteet({changed, setChanged}) {
         const map = useMap();
@@ -39,6 +39,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
                 l.remove()
             })
             setChanged(false)
+            map.panTo(position)
         }
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
             attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -49,7 +50,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
                     click: clicked,
                 })
                 layer.bindPopup(function (layer) {
-                    return layer.feature.properties.country + layer.feature.properties.year;
+                    return layer.feature.properties.country + " " + layer.feature.properties.year;
                 })
             }
         }).addTo(map); 
