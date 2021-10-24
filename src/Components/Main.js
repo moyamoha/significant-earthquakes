@@ -7,14 +7,19 @@ import FilterPalkki from './FilterPalkki';
 
 export default function Main() {
     const [currQuack, setQuake] = useState(() => geoData.features[0]);
-    const [filterFunc, setFilterFunc] = useState(() => function(item) {
-        return item.properties.country === "CHINA" && item.properties.year > 2000
-    })
+    const [changed, setChanged] = useState(() => false)
+    let initialFilterObj = {
+        all: false,
+        year: 0,
+        country: "AFGHANISTAN",
+        eq_primary: 0
+    }
+    const [filterObj, setFilterObj] = useState(() => initialFilterObj)
     return (
         <div className="container-fluid pt-3" id="main">
             <div className="row">
-                <FilterPalkki setFilterFunction={setFilterFunc}/> 
-                <MapArea quake={currQuack} filterFunction={filterFunc} changeQuake={setQuake}/>
+                <FilterPalkki setChanged={setChanged} filterObj={filterObj} setFilterObj={setFilterObj}/> 
+                <MapArea changed={changed} quake={currQuack} filterObj={filterObj} changeQuake={setQuake}/>
                 <Uutiset quake={currQuack}/>
             </div>
       </div>

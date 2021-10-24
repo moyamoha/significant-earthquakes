@@ -7,7 +7,7 @@ export default function Tiedot({quake}) {
                 {
                     props.map(x => <><strong> {x}:</strong> <span>{quake.properties[x]} </span></>)
                 }
-                <a style={{display:"block"}} className="linkki">Read more about this</a>
+                <span style={{display:"block"}} className="linkki">Read more about this</span>
             </div>
     );
 }
