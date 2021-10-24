@@ -8,7 +8,6 @@ import L from 'leaflet';
 
 
 delete L.Icon.Default.prototype._getIconUrl;
-let position = Data[0].fields.coordinates;
 L.Icon.Default.mergeOptions({
     iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default,
     iconUrl: require('leaflet/dist/images/marker-icon.png').default,
@@ -26,7 +25,9 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
             item.properties.year >= filterObj.year
         }
     });
+    console.log(data)
     let num = data.length;
+    let position = [...data[0].geometry.coordinates].reverse()
 
     function Pisteet({changed, setChanged}) {
         const map = useMap();
@@ -48,7 +49,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
                     click: clicked,
                 })
                 layer.bindPopup(function (layer) {
-                    return layer.feature.properties.country + "\n" + layer.feature.properties.year;
+                    return layer.feature.properties.country + layer.feature.properties.year;
                 })
             }
         }).addTo(map); 
@@ -58,7 +59,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
    
     return (
         <div className="px-4 mt-3">
-            <MapContainer   className="map col-9 w-100" center={position} zoom={1} style={{height:"500px"}}>
+            <MapContainer   className="map col-9 w-100" center={position} zoom={5} style={{height:"500px"}}>
                 <Pisteet changed={changed} setChanged={setChanged}/>
             </MapContainer>
             <div style={{textAlign: "center", }}>Found {num} records</div>
