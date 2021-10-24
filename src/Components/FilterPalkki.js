@@ -1,7 +1,7 @@
 import React from 'react';
 import data from './../data/geo.json';
 
-const FilterPalkki = ({setChanged, filterObj, setFilterObj}) => {
+const FilterPalkki = ({setQuake,setChanged, filterObj, setFilterObj}) => {
    let maat = data.features.map(x => x.properties.country)
 
     maat = [...new Set(maat)].sort()
@@ -19,6 +19,7 @@ const FilterPalkki = ({setChanged, filterObj, setFilterObj}) => {
         }
         if (uusiObj !== filterObj) {
             setChanged(true)
+            setQuake(null)
         } else {
             setChanged(false)
         }

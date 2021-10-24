@@ -29,7 +29,6 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
     let num = data.length;
 
     function Pisteet({changed, setChanged}) {
-        const [reload, setReload] = useState(() => false)
         const map = useMap();
         const clicked = (e) => {
             setCurrentQuake(e.target.feature)
@@ -43,19 +42,16 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
             attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-        let myLayer = L.geoJSON(data,{
+        L.geoJSON(data,{
             onEachFeature: function (feature, layer) {
                 layer.on({
                     click: clicked,
                 })
                 layer.bindPopup(function (layer) {
-                    return layer.feature.properties.country;
+                    return layer.feature.properties.country + "\n" + layer.feature.properties.year;
                 })
             }
         }).addTo(map); 
-        
-
-
         return null;
     }
     
@@ -65,7 +61,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
             <MapContainer   className="map col-9 w-100" center={position} zoom={1} style={{height:"500px"}}>
                 <Pisteet changed={changed} setChanged={setChanged}/>
             </MapContainer>
-            <div>{num}</div>
+            <div style={{textAlign: "center", }}>Found {num} records</div>
         </div>
     )
 
