@@ -33,11 +33,6 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
             item.properties.year >= filterObj.year
         }
     });
-
-    let num = data.length;
-    if (data.length === 0) {
-
-    }
     let zoom = data.length === 0 ? 2 : 4
     let position = data.length > 0 ? getCenter(data): [0,0]
 
@@ -76,7 +71,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
             <MapContainer   className="map col-9 w-100" center={position} zoom={zoom} style={{height:"500px"}}>
                 <Pisteet changed={changed} setChanged={setChanged}/>
             </MapContainer>
-            <div style={{textAlign: "center", }}>Found {num} records</div>
+            <div style={{textAlign: "center", }}>Found {data.length} records</div>
         </div>
     )
 
