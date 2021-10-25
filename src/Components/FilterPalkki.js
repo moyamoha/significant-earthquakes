@@ -9,7 +9,6 @@ const FilterPalkki = ({setQuake,setChanged, filterObj, setFilterObj}) => {
     function changeFilterObj(e) {
         let year = filterObj.year
         let eq_primary = filterObj.eq_primary
-        let country = filterObj.country
         console.log(e.target.textContent)
         let uusiObj = {
             all: false,
@@ -20,10 +19,10 @@ const FilterPalkki = ({setQuake,setChanged, filterObj, setFilterObj}) => {
         if (uusiObj !== filterObj) {
             setChanged(true)
             setQuake(null)
+            setFilterObj(uusiObj)
         } else {
             setChanged(false)
         }
-        setFilterObj(uusiObj)
     }
     return (
         <div className="col-2 listapalkki">
