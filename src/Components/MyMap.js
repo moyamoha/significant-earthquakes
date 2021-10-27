@@ -40,17 +40,20 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
         setCurrentQuake(e.target.feature)
     }
 
-    function Pisteet() {
+    function Pisteet({changed, setChanged}) {
         const map = useMap();
-        map.eachLayer(function (layer) {
-            if(layer.id == "geoTaso"){
-                console.log(layer)
-                map.removeLayer(layer)
-            }
-        })
-            
-           
-          map.panTo(position)
+
+        if (changed) {
+            map.eachLayer(function (layer) {
+                if(layer.id === "geoTaso"){
+                    console.log(layer)
+                    map.removeLayer(layer)
+                }
+            }) 
+            setChanged(false)
+            map.panTo(position)
+        }
+
         var geoTaso = L.geoJSON(data,{
             onEachFeature: function (feature, layer) {
                 layer.on({
@@ -64,8 +67,6 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
        
         geoTaso.id = "geoTaso"
         map.addLayer(geoTaso)
-       
-       
         
         return null;
     }
@@ -79,7 +80,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
             />
-                <Pisteet changed={changed} setChanged={setChanged}/>
+            <Pisteet changed={changed}/>
             </MapContainer>
             <div style={{textAlign: "center", }}>Found {data.length} records</div>
         </div>
