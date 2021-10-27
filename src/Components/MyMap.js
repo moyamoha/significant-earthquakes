@@ -1,5 +1,5 @@
 import React from "react";
-import { MapContainer, useMap} from "react-leaflet";
+import { MapContainer, useMap,TileLayer} from "react-leaflet";
 import geo from "./../data/geo.json"
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -40,19 +40,18 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
         setCurrentQuake(e.target.feature)
     }
 
-    function Pisteet({changed, setChanged}) {
+    function Pisteet() {
         const map = useMap();
-        if (changed) {
-            map.eachLayer(function (l) {
-                l.remove()
-            })
-            setChanged(false)
-            map.panTo(position)
-        }
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        L.geoJSON(data,{
+        map.eachLayer(function (layer) {
+            if(layer.id == "geoTaso"){
+                console.log(layer)
+                map.removeLayer(layer)
+            }
+        })
+            
+           
+          map.panTo(position)
+        var geoTaso = L.geoJSON(data,{
             onEachFeature: function (feature, layer) {
                 layer.on({
                     click: markerClicked,
@@ -61,7 +60,13 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
                     return layer.feature.properties.country + " " + layer.feature.properties.year
                 })
             }
-        }).addTo(map)
+        })
+       
+        geoTaso.id = "geoTaso"
+        map.addLayer(geoTaso)
+       
+       
+        
         return null;
     }
     
@@ -69,6 +74,11 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
     return (
         <div className="px-4 mt-3">
             <MapContainer   className="map col-9 w-100" center={position} zoom={zoom} style={{height:"500px"}}>
+            <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright%22%3EOpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+
+            />
                 <Pisteet changed={changed} setChanged={setChanged}/>
             </MapContainer>
             <div style={{textAlign: "center", }}>Found {data.length} records</div>
