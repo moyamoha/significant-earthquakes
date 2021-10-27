@@ -80,7 +80,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
             />
-            <Pisteet changed={changed}/>
+            <Pisteet changed={changed} setChanged={setChanged}/>
             </MapContainer>
             <div style={{textAlign: "center", }}>Found {data.length} records</div>
         </div>
