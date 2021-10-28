@@ -13,7 +13,7 @@ const FilterPalkki = ({setQuake,setChanged, filterObj, setFilterObj}) => {
         let uusiObj = {
             all: false,
             year,
-            country: "CHINA",
+            country: e.target.textContent,
             eq_primary
         }
         if (uusiObj !== filterObj) {

@@ -25,7 +25,7 @@ function getCenter(data) {
         lat += item.geometry.coordinates[0]
         lon += item.geometry.coordinates[1]
     }
-    return [lat / data.length, lon/data.length].reverse()
+    return [data.length === 0 ? 0: lat/data.length, data.length === 0 ? 0: lon/data.length].reverse()
 }
 
 function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
@@ -37,8 +37,9 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
             item.properties.year >= filterObj.year
         }
     });
+    console.log(data.length)
     let zoom = data.length === 0 ? 2 : 4
-    let position = data.length > 0 ? getCenter(data): [0,0]
+    let position = filterObj.all ? [0,0] : getCenter(data);
 
     const markerClicked = (e) => {
         setCurrentQuake(e.target.feature)
@@ -67,10 +68,10 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
                 })
             }
         }) */
-        map.setMaxZoom(10)
+        map.setMaxZoom(12)
         var markers = L.markerClusterGroup()
         for (let item of data) {
-            if (item) {
+            if (item.geometry) {
                 var marker = L.marker(item.properties.coordinates);
                 marker.feature = item;
                 marker.bindPopup( function () {
