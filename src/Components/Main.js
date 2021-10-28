@@ -7,9 +7,9 @@ export default function Main() {
     const [currQuack, setQuake] = useState(() => null);
     const [changed, setChanged] = useState(() => false)
     let initialFilterObj = {
-        all: false,
+        all: true,
         year: 0,
-        country: "AFGHANISTAN",
+        country: "CHINA",
         eq_primary: 0
     }
     const [filterObj, setFilterObj] = useState(() => initialFilterObj)

@@ -2,6 +2,9 @@ import React from "react";
 import { MapContainer, useMap,TileLayer} from "react-leaflet";
 import geo from "./../data/geo.json"
 import 'leaflet/dist/leaflet.css';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+import 'leaflet.markercluster/dist/leaflet.markercluster';
 import L from 'leaflet';
 
 
@@ -18,6 +21,7 @@ function getCenter(data) {
     let lat = 0
     let lon = 0
     for (let item of data) {
+        if (!item.geometry) continue;
         lat += item.geometry.coordinates[0]
         lon += item.geometry.coordinates[1]
     }
@@ -45,8 +49,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
 
         if (changed) {
             map.eachLayer(function (layer) {
-                if(layer.id === "geoTaso"){
-                    console.log(layer)
+                if(layer.id === "markersTaso"){
                     map.removeLayer(layer)
                 }
             }) 
@@ -54,7 +57,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
             map.panTo(position)
         }
 
-        var geoTaso = L.geoJSON(data,{
+/*         var geoTaso = L.geoJSON(data,{
             onEachFeature: function (feature, layer) {
                 layer.on({
                     click: markerClicked,
@@ -63,11 +66,22 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
                     return layer.feature.properties.country + " " + layer.feature.properties.year
                 })
             }
-        })
-       
-        geoTaso.id = "geoTaso"
-        map.addLayer(geoTaso)
-        
+        }) */
+        map.setMaxZoom(10)
+        var markers = L.markerClusterGroup()
+        for (let item of data) {
+            if (item) {
+                var marker = L.marker(item.properties.coordinates);
+                marker.feature = item;
+                marker.bindPopup( function () {
+                    return item.properties.country + " " + item.properties.year;
+                }).on('click', markerClicked);
+                markers.addLayer(marker)
+            }
+
+        }
+        markers.id = "markersTaso"
+        map.addLayer(markers)
         return null;
     }
     
