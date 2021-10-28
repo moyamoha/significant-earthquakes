@@ -89,13 +89,13 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
    
     return (
         <div className="px-4 mt-3">
-            <MapContainer   className="map col-9 w-100" center={position} zoom={zoom} style={{height:"500px"}}>
-            <TileLayer
-                attribution='&copy; <a href="http://osm.org/copyright%22%3EOpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            <MapContainer className="map col-9 w-100" center={position} zoom={zoom} style={{height:"500px"}}>
+                <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright%22%3EOpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
-            />
-            <Pisteet changed={changed} setChanged={setChanged}/>
+                />
+                <Pisteet changed={changed} setChanged={setChanged}/>
             </MapContainer>
             <div style={{textAlign: "center", }}>Found {data.length} records</div>
         </div>
