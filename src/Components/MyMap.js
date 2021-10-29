@@ -69,6 +69,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
             }
         }) */
         map.setMaxZoom(12)
+        map.setMinZoom(2)
         var markers = L.markerClusterGroup()
         for (let item of data) {
             if (item.geometry) {
@@ -89,7 +90,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
    
     return (
         <div className="px-4 mt-3">
-            <MapContainer className="map col-9 w-100" center={position} zoom={zoom} style={{height:"500px"}}>
+            <MapContainer className="map col-9 w-100" center={position} zoom={changed ? 2 : zoom} style={{height:"500px"}}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright%22%3EOpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
