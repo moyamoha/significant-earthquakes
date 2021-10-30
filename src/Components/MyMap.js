@@ -58,16 +58,6 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
             map.panTo(position)
         }
 
-/*         var geoTaso = L.geoJSON(data,{
-            onEachFeature: function (feature, layer) {
-                layer.on({
-                    click: markerClicked,
-                })
-                layer.bindPopup(function (layer) {
-                    return layer.feature.properties.country + " " + layer.feature.properties.year
-                })
-            }
-        }) */
         map.setMaxZoom(12)
         map.setMinZoom(2)
         var markers = L.markerClusterGroup()
