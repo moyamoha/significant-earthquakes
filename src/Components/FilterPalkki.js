@@ -1,5 +1,5 @@
 import React from 'react';
-import data from './../data/geo.json';
+import data from './../data/korjattu_geo.json';
 
 const FilterPalkki = ({setQuake,setChanged, filterObj, setFilterObj}) => {
    let maat = data.features.map(x => x.properties.country)

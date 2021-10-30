@@ -1,6 +1,6 @@
 import React from "react";
 import { MapContainer, useMap,TileLayer} from "react-leaflet";
-import geo from "./../data/geo.json"
+import geo from "./../data/korjattu_geo.json"
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
