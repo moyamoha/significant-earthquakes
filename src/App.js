@@ -1,10 +1,10 @@
 
 import React from 'react';
 import './App.css';
-import  MapArea  from './Components/MapArea';
+import './index.css';
 import Navbar from './Components/Navbar';
 import Seprator from './Components/Separator';
-import Uutiset from "./Components/Uutiset";
+import Main from './Components/Main';
 
 
 function App() {
@@ -13,12 +13,7 @@ function App() {
     <div className="App">
       <Navbar/>
       <Seprator/>
-      <div className="container-fluid" id="main">
-        <div className="row">
-          <MapArea/>
-          <Uutiset/>
-        </div>
-      </div>
+      <Main />
     </div>
   );
 }
