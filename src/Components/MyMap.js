@@ -37,7 +37,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
             item.properties.year >= filterObj.year
         }
     });
-    console.log(data.length)
+    
     let zoom = data.length === 0 ? 2 : 4
     let position = filterObj.all ? [0,0] : getCenter(data);
 
@@ -61,9 +61,11 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
         map.setMaxZoom(12)
         map.setMinZoom(2)
         var markers = L.markerClusterGroup()
+        
         for (let item of data) {
             if (item.geometry) {
                 var marker = L.marker(item.properties.coordinates);
+               
                 marker.feature = item;
                 marker.bindPopup( function () {
                     return item.properties.country + " " + item.properties.year;
