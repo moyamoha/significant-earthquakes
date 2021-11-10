@@ -12,6 +12,7 @@ export default function Tiedot({quake}) {
     
 
     //tätä pitää vielä siistiä...
+    
    let name = quake ? <div> <strong>Country name: </strong> {quake.properties["country"] ? quake.properties["country"]: "Not available" }</div>: <div></div>
    let magnitude = quake ? <div> <strong>Magnitude: </strong> {quake.properties["eq_primary"] ? quake.properties["eq_primary"]: "Not available"}</div>: <div></div>
    let deaths = quake ? <div> <strong>Deaths: </strong> {quake.properties["deaths"] ? quake.properties["deaths"]: "Not available"}</div>: <div></div>
