@@ -7,7 +7,7 @@ export default function MapArea( {setChanged ,changed, quake,filterObj, changeQu
     return (
         <div className="col-8 maparea">
             <div className="d-flex flex-column">
-                <MyMap changed={changed} setChanged={setChanged} filterObj={filterObj} setCurrentQuake={changeQuake}/>
+                <MyMap changed={changed} setChanged={setChanged} filterObj={filterObj} setCurrentQuake={changeQuake} currentQuake = {quake}/>
                 <hr></hr>
                 <Tiedot quake={quake}/>
             </div>

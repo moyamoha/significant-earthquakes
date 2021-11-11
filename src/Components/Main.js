@@ -5,7 +5,7 @@ import FilterPalkki from './FilterPalkki';
 
 export default function Main() {
     const [currQuack, setQuake] = useState(() => null);
-    const [changed, setChanged] = useState(() => false)
+    const [changed, setChanged] = useState(() => true)
     let initialFilterObj = {
         all: true,
         year: 0,
