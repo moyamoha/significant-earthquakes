@@ -1,6 +1,36 @@
 import React from 'react';
 import  Uutinen  from './Uutinen';
 
+/* UUTISTEN HAKU. Kommenteissa, ettei quota ylity, ja api key ei ole vielä
+dotenv-tiedostossa eikä sitä laiteta julkisesti nettiin. haku-objekti on
+esimerkkiuutinen, joka on haettu tällä.
+TODO: uutiskortit for-loopilla, eikä copypastella? Haun hienosäätö?
+
+var axios = require("axios").default;
+
+if (quake != null) {
+  const searchString = "earthquake+" + quake.properties["country"] + "+year+" + quake.properties["year"];
+  const encodedString = encodeURI(searchString);
+  console.log(searchString);
+
+  var options = {
+    method: 'GET',
+    url: 'https://google-search1.p.rapidapi.com/google-search',
+    params: {hl: 'en', q: encodedString, gl: 'us'},
+    headers: {
+      'x-rapidapi-host': 'google-search1.p.rapidapi.com',
+      'x-rapidapi-key': 'LAITA DOTENV-TIEDOSTOON'
+    }
+  };
+
+  axios.request(options).then(function (response) {
+  	console.log(response.data);
+  }).catch(function (error) {
+  	console.error(error);
+  });
+  }
+*/
+
 export default function Uutiset({quake}) {
 
     return (
