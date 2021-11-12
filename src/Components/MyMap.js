@@ -87,7 +87,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
                
                 marker.feature = item;
                 marker.bindPopup( function () {
-                    return item.properties.country + " " + item.properties.year;
+                    return item.properties.country + " " + item.properties.year + " " + "["+item.properties.coordinates+"]";
                 }).on('click', markerClicked);
                 markers.addLayer(marker)
             }
