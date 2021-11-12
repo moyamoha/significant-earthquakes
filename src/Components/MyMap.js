@@ -28,7 +28,7 @@ function getCenter(data) {
     return [data.length === 0 ? 0: lat/data.length, data.length === 0 ? 0: lon/data.length].reverse()
 }
 
-function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
+function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake}) {
     let data = geo.features.filter(item => {
         if (filterObj.all) return true
         else {
@@ -37,23 +37,39 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
             item.properties.year >= filterObj.year
         }
     });
-    console.log(data.length)
+    
     let zoom = data.length === 0 ? 2 : 4
     let position = filterObj.all ? [0,0] : getCenter(data);
 
     const markerClicked = (e) => {
+       
+        
         setCurrentQuake(e.target.feature)
+
+        //console.log(currentQuake.properties.i_d)
+        //console.log(e.target.feature.properties.i_d)
+       
+     
+       
+       
+    
+            
+    
     }
+
+
 
     function Pisteet({changed, setChanged}) {
         const map = useMap();
-
+        console.log(changed)
         if (changed) {
+           
             map.eachLayer(function (layer) {
                 if(layer.id === "markersTaso"){
                     map.removeLayer(layer)
                 }
             }) 
+            
             setChanged(false)
             map.panTo(position)
         }
@@ -61,19 +77,26 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
         map.setMaxZoom(12)
         map.setMinZoom(2)
         var markers = L.markerClusterGroup()
-        for (let item of data) {
+        
+        
+        if(changed == true){
+            for (let item of data) {
+            
             if (item.geometry) {
                 var marker = L.marker(item.properties.coordinates);
+               
                 marker.feature = item;
                 marker.bindPopup( function () {
-                    return item.properties.country + " " + item.properties.year;
+                    return item.properties.country + " " + item.properties.year + " " + "["+item.properties.coordinates+"]";
                 }).on('click', markerClicked);
                 markers.addLayer(marker)
             }
 
         }
+        
         markers.id = "markersTaso"
-        map.addLayer(markers)
+        map.addLayer(markers)}
+        
         return null;
     }
     
