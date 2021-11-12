@@ -1,0 +1,65 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.7,
+                    15.5
+                ]
+            },
+            "properties": {
+                "region_code": 150,
+                "location_name": "MEXICO-GUATEMALA:  S CHIAPAS",
+                "damage_description": "MODERATE (~$1 to $5 million)",
+                "deaths": 20,
+                "country": "MEXICO",
+                "focal_depth": 114,
+                "i_d": "4465",
+                "eq_mag_unk": 5.7,
+                "coordinates": [
+                    15.5,
+                    -92.7
+                ],
+                "month": "09",
+                "flag_tsunami": "Tsunami",
+                "year": 1968,
+                "deaths_description": "Few (~1 to 50 deaths)",
+                "eq_primary": 5.7,
+                "day": "25"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    57.9,
+                    37.1
+                ]
+            },
+            "properties": {
+                "region_code": 140,
+                "location_name": "IRAN:  NE KHURASAN PROVINCE",
+                "damage_description": "MODERATE (~$1 to $5 million)",
+                "deaths": 50,
+                "country": "IRAN",
+                "focal_depth": 11,
+                "i_d": "4471",
+                "eq_mag_unk": 5.6,
+                "coordinates": [
+                    37.1,
+                    57.9
+                ],
+                "month": "01",
+                "intensity": 8,
+                "year": 1969,
+                "deaths_description": "Few (~1 to 50 deaths)",
+                "eq_primary": 5.6,
+                "day": "03"
+            }
+        }
+    ]
+}
