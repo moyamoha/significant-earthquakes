@@ -1,220 +1,278 @@
 import React from 'react';
 import  Uutinen  from './Uutinen';
 
-/* UUTISTEN HAKU. Kommenteissa, ettei quota ylity, ja api key ei ole vielä
-dotenv-tiedostossa eikä sitä laiteta julkisesti nettiin. haku-objekti on
-esimerkkiuutinen, joka on haettu tällä.
-TODO: uutiskortit for-loopilla, eikä copypastella? Haun hienosäätö?
+//.env -tiedosto projektin juurikansiossa jonne laitetaan api key. Laitetaan
+//-env gitignoreen.
+
+//uutisten haku toimii, mutta ei päivity sivulle. Uutiset löytyy ja ne tallennetaan
+//objektiksi, edellinen uutinen tulee kun painaa seuraavaa järistystä.
+
+//palautettavien uutisten mappaus? nappi, josta niitä saa lisää näkyviin?
+
+require('dotenv').config()
 
 var axios = require("axios").default;
 
-if (quake != null) {
-  const searchString = "earthquake+" + quake.properties["country"] + "+year+" + quake.properties["year"];
-  const encodedString = encodeURI(searchString);
-  console.log(searchString);
-
-  var options = {
-    method: 'GET',
-    url: 'https://google-search1.p.rapidapi.com/google-search',
-    params: {hl: 'en', q: encodedString, gl: 'us'},
-    headers: {
-      'x-rapidapi-host': 'google-search1.p.rapidapi.com',
-      'x-rapidapi-key': 'LAITA DOTENV-TIEDOSTOON'
-    }
-  };
-
-  axios.request(options).then(function (response) {
-  	console.log(response.data);
-  }).catch(function (error) {
-  	console.error(error);
-  });
-  }
-*/
-
 export default function Uutiset({quake}) {
 
-    return (
-        <div className="col-2 pb-2 px-3 uutispalkki">
-            <Uutinen link={haku.organic[0].url} text= {haku.organic[0].title} linktext= "Siirry uutiseen" snippet={haku.organic[0].snippet} />
-            <Uutinen link={haku.organic[5].url} text= {haku.organic[5].title} linktext= "Siirry uutiseen" snippet={haku.organic[5].snippet} />
-            <Uutinen link={haku.organic[2].url} text= {haku.organic[2].title} linktext= "Siirry uutiseen" snippet={haku.organic[2].snippet} />
-            <Uutinen link={haku.organic[3].url} text= {haku.organic[3].title} linktext= "Siirry uutiseen" snippet={haku.organic[3].snippet} />
-            <Uutinen link={haku.organic[4].url} text= {haku.organic[4].title} linktext= "Siirry uutiseen" snippet={haku.organic[4].snippet} />
+  if (quake != null) {
+    const searchString = "earthquake+" + quake.properties["country"] + "+year+" + quake.properties["year"];
+    const encodedString = encodeURI(searchString);
+    console.log(searchString);
 
-        </div>
-    );
+    var options = {
+      method: 'GET',
+      url: 'https://google-search3.p.rapidapi.com/api/v1/search/q='+searchString,
+      headers: {
+        'x-user-agent': 'desktop',
+        'x-proxy-location': 'US',
+        'x-rapidapi-host': 'google-search3.p.rapidapi.com',
+        'x-rapidapi-key': process.env.REACT_APP_G_API_KEY
+      }
+    };
+
+    axios.request(options).then(function (response) {
+      haku = {};
+      haku = response.data;
+    	console.log(haku);
+    }).catch(function (error) {
+    	console.error(error);
+    });
+    }
+
+  return (
+      <div className="col-2 pb-2 px-3 uutispalkki">
+          <Uutinen link={haku.results[0].link} text= {haku.results[0].title} linktext= "Siirry uutiseen" snippet={haku.results[0].description} />
+          <Uutinen link={haku.results[1].link} text= {haku.results[1].title} linktext= "Siirry uutiseen" snippet={haku.results[1].description} />
+          <Uutinen link={haku.results[2].link} text= {haku.results[2].title} linktext= "Siirry uutiseen" snippet={haku.results[2].description} />
+          <Uutinen link={haku.results[3].link} text= {haku.results[3].title} linktext= "Siirry uutiseen" snippet={haku.results[3].description} />
+          <Uutinen link={haku.results[4].link} text= {haku.results[4].title} linktext= "Siirry uutiseen" snippet={haku.results[4].description} />
+
+      </div>
+  );
+
 }
-// TESTIUUTINEN, ETTEI SEARCH QUOTA MENE TÄYTEEN
-let haku = {
-    "currentPage": 1,
-    "keyword": "earthquake+CANADA+year+1982",
-    "organic": [
+
+let haku =
+{
+    "results": [
         {
-            "domain": "earthquakescanada.nrcan.gc.ca",
-            "linkType": "LANDING",
-            "position": 1,
-            "snippet": "2, Spring 1982. At 0853 Atlantic Standard Time Saturday January 9, 1 982, the Miramichi region of north-central New Brunswick was shaken by the largest earthquake to have affected the Maritimes since 1929.Jan 9, 1982",
-            "title": "Double-Earthquake of Miramichi, New Brunswick, in 1982",
-            "url": "https://earthquakescanada.nrcan.gc.ca/historic-historique/events/19820109-en.php#:~:text=2%2C%20Spring%201982.,affected%20the%20Maritimes%20since%201929.",
-            "featured": true
+            "title": "List of earthquakes in 1951 - Wikipedia",
+            "link": "https://en.wikipedia.org/wiki/List_of_earthquakes_in_1951",
+            "description": "This is a list of earthquakes in 1951. Only magnitude 6.0 or greater earthquakes appear on the list. Lower magnitude events are included if they have caused ...‎Overall · ‎By magnitude · ‎Notable events · ‎April",
+            "additional_links": [
+                {
+                    "text": "List of earthquakes in 1951 - Wikipediahttps://en.wikipedia.org › wiki › List_of_earthquakes_i...",
+                    "href": "https://en.wikipedia.org/wiki/List_of_earthquakes_in_1951"
+                },
+                {
+                    "text": "Overall",
+                    "href": "https://en.wikipedia.org/wiki/List_of_earthquakes_in_1951#Overall"
+                },
+                {
+                    "text": "By magnitude",
+                    "href": "https://en.wikipedia.org/wiki/List_of_earthquakes_in_1951#By_magnitude"
+                },
+                {
+                    "text": "Notable events",
+                    "href": "https://en.wikipedia.org/wiki/List_of_earthquakes_in_1951#Notable_events"
+                },
+                {
+                    "text": "April",
+                    "href": "https://en.wikipedia.org/wiki/List_of_earthquakes_in_1951#April"
+                }
+            ],
+            "cite": {
+                "domain": "https://en.wikipedia.org › wiki › List_of_earthquakes_i...",
+                "span": " › wiki › List_of_earthquakes_i..."
+            }
         },
         {
-            "domain": "earthquakescanada.nrcan.gc.ca",
-            "linkType": "LANDING",
-            "position": 2,
-            "snippet": "",
-            "title": "Double-Earthquake of Miramichi, New Brunswick, in 1982",
-            "url": "https://earthquakescanada.nrcan.gc.ca/historic-historique/events/19820109-en.php#:~:text=2%2C%20Spring%201982.,affected%20the%20Maritimes%20since%201929."
+            "title": "Quake info: Very strong mag. 6.1 earthquake - Indian Ocean on ...",
+            "link": "https://www.volcanodiscovery.com/earthquakes/quake-info/2941878/mag6quake-Jan-25-1951-South-Indian-Ocean.html",
+            "description": "Very strong mag. 6.1 earthquake - Indian Ocean on Thursday, 25 Jan 1951 4:35 pm (GMT +0) ... Very strong magnitude 6.1 earthquake at 15 km depth.",
+            "additional_links": [
+                {
+                    "text": "Quake info: Very strong mag. 6.1 earthquake - Indian Ocean on ...https://www.volcanodiscovery.com › quake-info › mag6q...",
+                    "href": "https://www.volcanodiscovery.com/earthquakes/quake-info/2941878/mag6quake-Jan-25-1951-South-Indian-Ocean.html"
+                }
+            ],
+            "cite": {
+                "domain": "https://www.volcanodiscovery.com › quake-info › mag6q...",
+                "span": " › quake-info › mag6q..."
+            }
         },
         {
-            "domain": "www.cbc.ca",
-            "linkType": "LANDING",
-            "position": 3,
-            "snippet": "The epicentre of the 1982 earthquake was in Miramichi, but tremors were felt throughout the Maritime Provinces, Quebec and the New England States.",
-            "title": "1982: Earthquake shakes up East Coast - CBC Archives",
-            "url": "https://www.cbc.ca/archives/entry/1982-earthquake-shakes-up-east-coast"
+            "title": "6.1 magnitude earthquake near South Indian Ocean : January 25 ...",
+            "link": "https://earthquaketrack.com/quakes/1951-01-25-16-35-35-utc-6-1-15",
+            "description": " › quakes › 1951-01-25-16-...  › quakes › 1951-01-25-16-... Today: 6.0 magnitude earthquake near Sinabang, Aceh, Indonesia. 6.1 magnitude earthquake. 70 years ago. UTC time: Thursday, January 25, 1951 16:35 PM.",
+            "additional_links": [
+                {
+                    "text": "6.1 magnitude earthquake near South Indian Ocean : January 25 ...https://earthquaketrack.com › quakes › 1951-01-25-16-...",
+                    "href": "https://earthquaketrack.com/quakes/1951-01-25-16-35-35-utc-6-1-15"
+                },
+                {
+                    "text": "6.3 magnitude earthquake near Mid-Indian Ridge : May 02, 1951 16 ...https://earthquaketrack.com › quakes › 1951-05-02-16-...",
+                    "href": "https://earthquaketrack.com/quakes/1951-05-02-16-17-03-utc-6-3-15"
+                }
+            ],
+            "cite": {
+                "domain": "https://earthquaketrack.com › quakes › 1951-01-25-16-...",
+                "span": " › quakes › 1951-01-25-16-..."
+            }
         },
         {
-            "domain": "en.wikipedia.org",
-            "linkType": "LANDING",
-            "position": 4,
-            "snippet": "DatePlaceLatLonDeathsInjuriesMag.MMI2017‑05‑01Stikine Region, British Columbia59.83‑136.70006.3VIII2017‑05‑01Stikine Region, British Columbia59.82‑136.71006.2VII2017‑01‑08Nunavut74.39‑92.42006.0VIIView 45 more rows",
-            "title": "List of earthquakes in Canada - Wikipedia",
-            "url": "https://en.wikipedia.org/wiki/List_of_earthquakes_in_Canada"
+            "title": "6.1 magnitude earthquake near South Indian Ocean : January 25 ...",
+            "link": "https://earthquaketrack.com/quakes/1951-01-25-16-35-35-utc-6-1-15",
+            "description": "Today: 6.0 magnitude earthquake near Sinabang, Aceh, Indonesia. 6.1 magnitude earthquake. 70 years ago. UTC time: Thursday, January 25, 1951 16:35 PM.",
+            "additional_links": [
+                {
+                    "text": "6.1 magnitude earthquake near South Indian Ocean : January 25 ...https://earthquaketrack.com › quakes › 1951-01-25-16-...",
+                    "href": "https://earthquaketrack.com/quakes/1951-01-25-16-35-35-utc-6-1-15"
+                }
+            ],
+            "cite": {
+                "domain": "https://earthquaketrack.com › quakes › 1951-01-25-16-...",
+                "span": " › quakes › 1951-01-25-16-..."
+            }
         },
         {
-            "domain": "pubs.geoscienceworld.org",
-            "linkType": "LANDING",
-            "position": 5,
-            "snippet": "by RJ Wetmiller · 1984 · Cited by 101 — ... New Brunswick, earthquake of 9 January 1982 was located by comparison to the aftershock distribution in central New Brunswick, Canada, ...",
-            "title": "Aftershock sequences of the 1982 Miramichi, New Brunswick ...",
-            "url": "https://pubs.geoscienceworld.org/ssa/bssa/article/74/2/621/102208/aftershock-sequences-of-the-1982-miramichi-new"
+            "title": "6.3 magnitude earthquake near Mid-Indian Ridge : May 02, 1951 16 ...",
+            "link": "https://earthquaketrack.com/quakes/1951-05-02-16-17-03-utc-6-3-15",
+            "description": "Yesterday: 6.2 magnitude earthquake near Masachapa, Managua, Nicaragua. 6.3 magnitude earthquake. 70 years ago. UTC time: Wednesday, May 02, 1951 16:17 PM.",
+            "additional_links": [
+                {
+                    "text": "6.3 magnitude earthquake near Mid-Indian Ridge : May 02, 1951 16 ...https://earthquaketrack.com › quakes › 1951-05-02-16-...",
+                    "href": "https://earthquaketrack.com/quakes/1951-05-02-16-17-03-utc-6-3-15"
+                }
+            ],
+            "cite": {
+                "domain": "https://earthquaketrack.com › quakes › 1951-05-02-16-...",
+                "span": " › quakes › 1951-05-02-16-..."
+            }
         },
         {
-            "domain": "cdnsciencepub.com",
-            "linkType": "LANDING",
-            "position": 6,
-            "snippet": "by S Ma · 2017 · Cited by 2 — On 9 January 1982, in the Miramichi region of New Brunswick, Canada, an earthquake with body-wave magnitude (mb) 5.7 occurred, and extensive aftershocks ...",
-            "title": "Focal depth distribution of the 1982 Miramichi earthquake ...",
-            "url": "https://cdnsciencepub.com/doi/abs/10.1139/cjes-2016-0111"
+            "title": "Today in Earthquake History: Assam 1950",
+            "link": "https://seismo.berkeley.edu/blog/2017/08/15/today-in-earthquake-history-assam-1950.html",
+            "description": "Aug 15, 2017 — It was August 15, 1950. People all over India were ready to celebrate their Independence Day, three years after Britain had released the ...",
+            "additional_links": [
+                {
+                    "text": "Today in Earthquake History: Assam 1950https://seismo.berkeley.edu › blog › 2017/08/15 › toda...",
+                    "href": "https://seismo.berkeley.edu/blog/2017/08/15/today-in-earthquake-history-assam-1950.html"
+                }
+            ],
+            "cite": {
+                "domain": "https://seismo.berkeley.edu › blog › 2017/08/15 › toda...",
+                "span": " › blog › 2017/08/15 › toda..."
+            }
         },
         {
-            "domain": "www.volcanodiscovery.com",
-            "linkType": "LANDING",
-            "position": 7,
-            "snippet": "Strong mag. 5.1 earthquake - 87 km west of Miramichi, Northumberland County, New Brunswick, Canada, on Saturday, January 9, 1982 at 16:36 (GMT) · Strong ...",
-            "title": "Quake info: Strong mag. 5.1 earthquake - 87 km west of ...",
-            "url": "https://www.volcanodiscovery.com/earthquakes/quake-info/3047613/mag5quake-Jan-9-1982-New-Brunswick-Canada.html"
+            "title": "Seismicity of the Indian Ocean - Wiley Online Library",
+            "link": "https://onlinelibrary.wiley.com/doi/pdf/10.1029/JZ071i010p02575",
+            "description": "c 1922, excep• for the years 1942 and 1951 when large earthquakes occurred. A solution of the equation Log N' -- a n u b(8 -- M), based on data.",
+            "additional_links": [
+                {
+                    "text": "Seismicity of the Indian Ocean - Wiley Online Libraryhttps://onlinelibrary.wiley.com › doi › pdf",
+                    "href": "https://onlinelibrary.wiley.com/doi/pdf/10.1029/JZ071i010p02575"
+                }
+            ],
+            "cite": {
+                "domain": "https://onlinelibrary.wiley.com › doi › pdf",
+                "span": " › doi › pdf"
+            }
         },
         {
-            "domain": "pubs.er.usgs.gov",
-            "linkType": "LANDING",
-            "position": 8,
-            "snippet": "by WJ Person · 1982 — The first major earthquake (magnitude 7.0-7.9) of the year was on January 11 ... Canada experienced one of its strongest earthquakes in a number of years on ...",
-            "title": "Earthquakes; January-February 1982 - USGS Publications ...",
-            "url": "https://pubs.er.usgs.gov/publication/70169164"
+            "title": "ith Dee - USGS Publications Repository",
+            "link": "https://pubs.usgs.gov/bul/1951/report.pdf",
+            "description": " › bul › 1951 › report  › bul › 1951 › report PDF (U.S. Geological Survey bulletin ; 1951) ... Year of. Well site or oil field location. Type. (m) pressure earthquake injection earthquakes.",
+            "additional_links": [
+                {
+                    "text": "ith Dee - USGS Publications Repositoryhttps://pubs.usgs.gov › bul › 1951 › report",
+                    "href": "https://pubs.usgs.gov/bul/1951/report.pdf"
+                },
+                {
+                    "text": "Why are we having so many earthquakes? Has naturally ...https://www.usgs.gov › faqs › why-are-we-having-so-m...",
+                    "href": "https://www.usgs.gov/faqs/why-are-we-having-so-many-earthquakes-has-naturally-occurring-earthquake-activity-been"
+                },
+                {
+                    "text": "Tsunami Generation from the 2004 M=9.1 Sumatra-Andaman ...https://www.usgs.gov › centers › pcmsc › science › tsun...",
+                    "href": "https://www.usgs.gov/centers/pcmsc/science/tsunami-generation-2004-m91-sumatra-andaman-earthquake"
+                }
+            ],
+            "cite": {
+                "domain": "https://pubs.usgs.gov › bul › 1951 › report",
+                "span": " › bul › 1951 › report"
+            }
         },
         {
-            "domain": "www.nytimes.com",
-            "linkType": "LANDING",
-            "position": 9,
-            "snippet": "Jan 12, 1982 — 12, 1982, Section A, Page 12 of the National edition with the headline: Around the Nation; Third Earthquake Hits Canada, New England.",
-            "title": "Around the Nation; Third Earthquake Hits Canada, New England",
-            "url": "https://www.nytimes.com/1982/01/12/us/around-the-nation-third-earthquake-hits-canada-new-england.html"
+            "title": "ith Dee - USGS Publications Repository",
+            "link": "https://pubs.usgs.gov/bul/1951/report.pdf",
+            "description": "(U.S. Geological Survey bulletin ; 1951) ... Year of. Well site or oil field location. Type. (m) pressure earthquake injection earthquakes.",
+            "additional_links": [
+                {
+                    "text": "ith Dee - USGS Publications Repositoryhttps://pubs.usgs.gov › bul › 1951 › report",
+                    "href": "https://pubs.usgs.gov/bul/1951/report.pdf"
+                }
+            ],
+            "cite": {
+                "domain": "https://pubs.usgs.gov › bul › 1951 › report",
+                "span": " › bul › 1951 › report"
+            }
         },
         {
-            "domain": "www.saltwire.com",
-            "linkType": "LANDING",
-            "position": 10,
-            "snippet": "Allison Bent, a seismologist with Earthquakes Canada, said Sunday's quake was recorded ... The 1982 quake, centred midway between Miramichi and Grand Falls, ...",
-            "title": "N.B. earthquake not an every day experience, but not unusual ...",
-            "url": "https://www.saltwire.com/atlantic-canada/holidays/nb-earthquake-not-an-every-day-experience-but-not-unusual-either-64966/"
+            "title": "Why are we having so many earthquakes? Has naturally ...",
+            "link": "https://www.usgs.gov/faqs/why-are-we-having-so-many-earthquakes-has-naturally-occurring-earthquake-activity-been",
+            "description": "That includes 15 earthquakes in the magnitude 7 range and one earthquake magnitude 8.0 or greater. In the past 40-50 years, our records show that we have ...",
+            "additional_links": [
+                {
+                    "text": "Why are we having so many earthquakes? Has naturally ...https://www.usgs.gov › faqs › why-are-we-having-so-m...",
+                    "href": "https://www.usgs.gov/faqs/why-are-we-having-so-many-earthquakes-has-naturally-occurring-earthquake-activity-been"
+                }
+            ],
+            "cite": {
+                "domain": "https://www.usgs.gov › faqs › why-are-we-having-so-m...",
+                "span": " › faqs › why-are-we-having-so-m..."
+            }
         },
         {
-            "domain": "www.csmonitor.com",
-            "linkType": "LANDING",
-            "position": 11,
-            "snippet": "Jan 11, 1982 — The worst earthquake in 126 years shook New England and southeast Canada this weekend, causing minor property damage in Maine and rocking ...",
-            "title": "New England, Canada shaken by earthquake - CSMonitor.com",
-            "url": "https://www.csmonitor.com/1982/0111/011125.html"
+            "title": "Tsunami Generation from the 2004 M=9.1 Sumatra-Andaman ...",
+            "link": "https://www.usgs.gov/centers/pcmsc/science/tsunami-generation-2004-m91-sumatra-andaman-earthquake",
+            "description": "The December 26, 2004 magnitude (M) 9.1 Sumatra-Andaman earthquake occurred along a tectonic subduction zone in which the India Plate, an oceanic plate, ...",
+            "additional_links": [
+                {
+                    "text": "Tsunami Generation from the 2004 M=9.1 Sumatra-Andaman ...https://www.usgs.gov › centers › pcmsc › science › tsun...",
+                    "href": "https://www.usgs.gov/centers/pcmsc/science/tsunami-generation-2004-m91-sumatra-andaman-earthquake"
+                }
+            ],
+            "cite": {
+                "domain": "https://www.usgs.gov › centers › pcmsc › science › tsun...",
+                "span": " › centers › pcmsc › science › tsun..."
+            }
+        },
+        {
+            "title": "Deep Earthquakes - Page 419 - Google Books Result",
+            "link": "https://books.google.com/books?id=-lZGdmBwSPkC&pg=PA419&lpg=PA419&dq=earthquake+INDIAN+OCEAN+year+1951&source=bl&ots=XQjTLvZPJk&sig=ACfU3U3RK0yFyCCJedJQbFeiscEe0QZ0Fw&hl=en&sa=X&ved=2ahUKEwiv_qCSzKL0AhWVpnIEHVuPAwwQ6AF6BAgWEAM",
+            "description": "Cliff Frohlich · 2006 · ‎ScienceSeismicity and plate deformation below the Andaman arc, northeastern Indian Ocean, Tectonophysics, 225, doi:10.1016/0040-1951(93)90314-A, 529–542.",
+            "additional_links": [
+                {
+                    "text": "Deep Earthquakes - Page 419 - Google Books Resulthttps://books.google.com › books",
+                    "href": "https://books.google.com/books?id=-lZGdmBwSPkC&pg=PA419&lpg=PA419&dq=earthquake+INDIAN+OCEAN+year+1951&source=bl&ots=XQjTLvZPJk&sig=ACfU3U3RK0yFyCCJedJQbFeiscEe0QZ0Fw&hl=en&sa=X&ved=2ahUKEwiv_qCSzKL0AhWVpnIEHVuPAwwQ6AF6BAgWEAM"
+                },
+                {
+                    "text": "Cliff Frohlich",
+                    "href": "/search?tbm=bks&q=inauthor:%22Cliff+Frohlich%22&sa=X&ved=2ahUKEwiv_qCSzKL0AhWVpnIEHVuPAwwQ9Ah6BAgWEAY"
+                }
+            ],
+            "cite": {
+                "domain": "https://books.google.com › books",
+                "span": " › books"
+            }
         }
     ],
-    "pagination": [
-        {
-            "page": 1,
-            "path": ""
-        },
-        {
-            "page": 2,
-            "path": "/search?q=earthquake%2BCANADA%2Byear%2B1982&gl=us&hl=en&ei=JVeNYbHJH8_AytMPl_uakAI&start=10&sa=N&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ8tMDegQIARA3"
-        },
-        {
-            "page": 3,
-            "path": "/search?q=earthquake%2BCANADA%2Byear%2B1982&gl=us&hl=en&ei=JVeNYbHJH8_AytMPl_uakAI&start=20&sa=N&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ8tMDegQIARA5"
-        },
-        {
-            "page": 4,
-            "path": "/search?q=earthquake%2BCANADA%2Byear%2B1982&gl=us&hl=en&ei=JVeNYbHJH8_AytMPl_uakAI&start=30&sa=N&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ8tMDegQIARA7"
-        },
-        {
-            "page": 5,
-            "path": "/search?q=earthquake%2BCANADA%2Byear%2B1982&gl=us&hl=en&ei=JVeNYbHJH8_AytMPl_uakAI&start=40&sa=N&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ8tMDegQIARA9"
-        },
-        {
-            "page": 6,
-            "path": "/search?q=earthquake%2BCANADA%2Byear%2B1982&gl=us&hl=en&ei=JVeNYbHJH8_AytMPl_uakAI&start=50&sa=N&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ8tMDegQIARA_"
-        },
-        {
-            "page": 7,
-            "path": "/search?q=earthquake%2BCANADA%2Byear%2B1982&gl=us&hl=en&ei=JVeNYbHJH8_AytMPl_uakAI&start=60&sa=N&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ8tMDegQIARBB"
-        },
-        {
-            "page": 8,
-            "path": "/search?q=earthquake%2BCANADA%2Byear%2B1982&gl=us&hl=en&ei=JVeNYbHJH8_AytMPl_uakAI&start=70&sa=N&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ8tMDegQIARBD"
-        },
-        {
-            "page": 9,
-            "path": "/search?q=earthquake%2BCANADA%2Byear%2B1982&gl=us&hl=en&ei=JVeNYbHJH8_AytMPl_uakAI&start=80&sa=N&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ8tMDegQIARBF"
-        },
-        {
-            "page": 10,
-            "path": "/search?q=earthquake%2BCANADA%2Byear%2B1982&gl=us&hl=en&ei=JVeNYbHJH8_AytMPl_uakAI&start=90&sa=N&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ8tMDegQIARBH"
-        }
-    ],
-    "relatedKeywords": [
-        {
-            "keyword": "ontario earthquake history",
-            "path": "/search?gl=us&hl=en&q=Ontario+earthquake+history&sa=X&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ1QJ6BAgcEAE"
-        },
-        {
-            "keyword": "list of earthquakes in the last 10 years",
-            "path": "/search?gl=us&hl=en&q=List+of+earthquakes+in+the+last+10+years&sa=X&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ1QJ6BAgtEAE"
-        },
-        {
-            "keyword": "victoria canada earthquake",
-            "path": "/search?gl=us&hl=en&q=Victoria+Canada+earthquake&sa=X&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ1QJ6BAgkEAE"
-        },
-        {
-            "keyword": "the big one earthquake canada",
-            "path": "/search?gl=us&hl=en&q=The+Big+one+earthquake+Canada&sa=X&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ1QJ6BAgnEAE"
-        },
-        {
-            "keyword": "last major earthquake",
-            "path": "/search?gl=us&hl=en&q=Last+major+earthquake&sa=X&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ1QJ6BAgmEAE"
-        },
-        {
-            "keyword": "worst earthquake in history",
-            "path": "/search?gl=us&hl=en&q=Worst+earthquake+in+history&sa=X&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ1QJ6BAglEAE"
-        },
-        {
-            "keyword": "alberta earthquake history",
-            "path": "/search?gl=us&hl=en&q=Alberta+earthquake+history&sa=X&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ1QJ6BAgoEAE"
-        },
-        {
-            "keyword": "buckingham earthquake",
-            "path": "/search?gl=us&hl=en&q=Buckingham+earthquake&sa=X&ved=2ahUKEwjx74D47pD0AhVPoHIEHZe9BiIQ1QJ6BAgdEAE"
-        }
-    ],
-    "totalResults": 10400000,
-    "timeTaken": 0.52
+    "image_results": [],
+    "total": 1680000,
+    "answers": [],
+    "ts": 1.3125956058502197,
+    "device_region": "US",
+    "device_type": "desktop"
 }
