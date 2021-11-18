@@ -1,36 +1,29 @@
 import React, {useState} from 'react';
-import Maanjaristykset from './Maanjaristykset';
 import MapArea from './MapArea';
 import Uutiset from './Uutiset';
 import FilterPalkki from './FilterPalkki';
-import Data from './../data/significant-earthquake-database.json';
-//import SampleData from './../data/earthquake_cut.json';
-
 
 export default function Main() {
-     const changeQuake = (jar) => {
-        setQuake(jar)
-    } 
-    //<Maanjaristykset onChangeQuake={changeQuake}/> 
-    // <FilterPalkki setQuake={setQuake} setChanged={setChanged} filterObj={filterObj} setFilterObj={setFilterObj}/> 
-
-
-    const [currQuack, setQuake] = useState(() => Data[0]);
-    const [changed, setChanged] = useState(() => false)
+    const [currQuack, setQuake] = useState(() => null);
+    const [changed, setChanged] = useState(() => true)
     let initialFilterObj = {
-        all: false,
-        year: 0,
-        country: "AFGHANISTAN",
+        all: true,
+        minyear: "",
+        maxyear: "",
+        minmagn: "",
+        maxmagn: "",
+        country: "",
+        mindeath: "",
+        maxdeath: "",
         eq_primary: 0
     }
     const [filterObj, setFilterObj] = useState(() => initialFilterObj)
     return (
         <div className="container-fluid pt-3" id="main">
             <div className="row">
-           
-            <Maanjaristykset onChangeQuake={changeQuake}/> 
-            <MapArea quake={currQuack} changeQuake={changeQuake}/>
-            <Uutiset quake={currQuack}/>
+                <FilterPalkki setQuake={setQuake} setChanged={setChanged} filterObj={filterObj} setFilterObj={setFilterObj}/> 
+                <MapArea setChanged={setChanged} changed={changed} quake={currQuack} filterObj={filterObj} changeQuake={setQuake}/>
+                <Uutiset quake={currQuack}/>
             </div>
       </div>
     )

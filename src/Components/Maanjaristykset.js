@@ -69,7 +69,7 @@ const Maanjaristykset = ({onChangeQuake}) => {
         } else if (parseInt(val.fields.year) >= parseInt(searchTerm)) {
             return val
         }
-    }  else if (opt == "magnitude") {
+    }  else if (opt == "magnitude") {   
         //magnituudilla rajaus
     }
 
@@ -154,3 +154,13 @@ const Maanjaristykset = ({onChangeQuake}) => {
 };
 
 export default Maanjaristykset;
+
+/*//pelkästään maat suoraan jsonista!!
+
+const FilterPalkki = ({setQuake,setChanged, filterObj, setFilterObj}) => {
+   let maat = data.features.map(x => x.properties.country)
+
+    maat = [...new Set(maat)].sort()
+
+
+*/
