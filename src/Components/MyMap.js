@@ -30,11 +30,21 @@ function getCenter(data) {
 
 function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake}) {
     let data = geo.features.filter(item => {
-        if (filterObj.all) return true
-        else {
-            return item.properties.country === filterObj.country && 
-            item.properties.eq_primary >= filterObj.eq_primary &&
-            item.properties.year >= filterObj.year
+        
+        if (filterObj.all) {return true
+        } else {//
+                 //console.log(item.properties.intensity)
+
+            return (item.properties.country === filterObj.country || (filterObj.country) === "") && 
+            ((item.properties.year >= filterObj.minyear) || (filterObj.minyear) === "") &&
+            ((item.properties.year <= filterObj.maxyear) || (filterObj.maxyear) === "") &&
+            ((item.properties.eq_primary <= filterObj.maxmagn) || (filterObj.maxmagn === "")) &&
+            ((item.properties.eq_primary >= filterObj.minmagn) || (filterObj.minmagn === "")) &&
+            ((item.properties.deaths <= filterObj.maxdeath) || (filterObj.maxdeath === "")) &&
+            ((item.properties.deaths >= filterObj.mindeath) || (filterObj.mindeath === ""))
+            
+            //item.properties.year >= filterObj.year
+
         }
     });
     
