@@ -42,7 +42,7 @@ export default function Tiedot({quake}) {
    
    
    let content = 
-               <div>  {name}
+               <div >  {name}
                {magnitude}
                {deaths}
                {houses}

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import MapArea from './MapArea';
 import Uutiset from './Uutiset';
 import FilterPalkki from './FilterPalkki';
+import Tiedot from './Tiedot';
 
 export default function Main() {
     const [currQuack, setQuake] = useState(() => null);
@@ -23,7 +24,7 @@ export default function Main() {
             <div className="row">
                 <FilterPalkki setQuake={setQuake} setChanged={setChanged} filterObj={filterObj} setFilterObj={setFilterObj}/> 
                 <MapArea setChanged={setChanged} changed={changed} quake={currQuack} filterObj={filterObj} changeQuake={setQuake}/>
-                <Uutiset quake={currQuack}/>
+                <Tiedot quake={currQuack}/>
             </div>
       </div>
     )
