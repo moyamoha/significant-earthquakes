@@ -8,8 +8,13 @@ export default function Main() {
     const [changed, setChanged] = useState(() => true)
     let initialFilterObj = {
         all: true,
-        year: 0,
-        country: "CHINA",
+        minyear: "",
+        maxyear: "",
+        minmagn: "",
+        maxmagn: "",
+        country: "",
+        mindeath: "",
+        maxdeath: "",
         eq_primary: 0
     }
     const [filterObj, setFilterObj] = useState(() => initialFilterObj)
