@@ -1,4 +1,3 @@
-
 import data from './../data/korjattu_geo.json';
 import React, {useState} from 'react';
 
@@ -28,12 +27,7 @@ const FilterPalkki = ({setQuake,setChanged, filterObj, setFilterObj}) => {
         setsMinMagn(minmagn);
         setsMaxDeaths(maxdeath);
         setsMinDeaths(mindeath);
-       // console.log(e.target.value)
-        //let year = filterObj.year //näiden tarkoitus päivittyä kun lisätään hakuehtoja?
         let eq_primary = filterObj.eq_primary
-        //let year = filterObj.year
-        //console.log(e.target.textContent)
-        
         let uusiObj = {
             all: false,
             minyear: minyear,
@@ -55,12 +49,8 @@ const FilterPalkki = ({setQuake,setChanged, filterObj, setFilterObj}) => {
         }
     }
 
-    
-
-
     return (
         <div className="col-2 listapalkki">
-            {/* Täällä on tarkoituksena luoda erilaisia suodatusvaihtoehtoja */}
             <label for="opt">Year:</label>
             <div id="opt"> 
                 <div>from...</div> 
@@ -72,10 +62,9 @@ const FilterPalkki = ({setQuake,setChanged, filterObj, setFilterObj}) => {
            <div> 
             <input list="loclist" id="searchTerm" type="text" placeholder="Enter location name..." onChange={(e) => {changeFilterObj(sminyear, smaxyear, e.target.value, sminMagn, smaxMagn, sminDeaths,smaxDeaths)}}/>
              <datalist id="loclist">
-             {maat.map(item => <option> {item}</option>)}
-                 
+                {maat.map(item => <option> {item}</option>)}    
             </datalist>
-            </div>
+           </div>
             <label>Magnitude:</label>
             <div>
                 <div>form..</div>
@@ -88,11 +77,6 @@ const FilterPalkki = ({setQuake,setChanged, filterObj, setFilterObj}) => {
             <input placeholder="min" id="deathMin" type="number" min="0" max="10 000" onChange={(e) => {changeFilterObj(sminyear, smaxyear, loc, sminMagn, smaxMagn, e.target.value,smaxDeaths)}}/>
             <div>to..</div>
             <input placeholder="max" id="deathMax" type="number" min="0" max="10 000" onChange={(e) => {changeFilterObj(sminyear, smaxyear, loc, sminMagn, smaxMagn, sminDeaths, e.target.value)}}/>
-
-          {/* <ul>
-                maat {maat.length}:
-                {maat.map(item => <li onClick={(e) => changeFilterObj(e)}>{item}</li>)}
-          </ul> */}
         </div>
     );
 };
