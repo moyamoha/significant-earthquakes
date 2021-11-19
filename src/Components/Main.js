@@ -23,8 +23,11 @@ export default function Main() {
         <div className="container-fluid pt-3" id="main">
             <div className="row">
                 <FilterPalkki setQuake={setQuake} setChanged={setChanged} filterObj={filterObj} setFilterObj={setFilterObj}/> 
-                <MapArea setChanged={setChanged} changed={changed} quake={currQuack} filterObj={filterObj} changeQuake={setQuake}/>
-                <Tiedot quake={currQuack}/>
+                <div className="col-10">
+                    <MapArea setChanged={setChanged} changed={changed} quake={currQuack} filterObj={filterObj} changeQuake={setQuake}/>
+                    <hr></hr>
+                    <Uutiset quake={currQuack}/>
+                </div>
             </div>
       </div>
     )

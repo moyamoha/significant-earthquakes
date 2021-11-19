@@ -53,7 +53,7 @@ export default function Tiedot({quake}) {
    // <span>Click a record to see more about it</span>
   
                     return (
-            <div style={{padding:'5px', textAlign:"justify", lineHeight:"1.8rem"}}>
+            <div id="tiedot" className="col-3" style={{padding:'5px',textAlign:"justify", lineHeight:"1.8rem"}}>
                 {content}
                
             </div>
