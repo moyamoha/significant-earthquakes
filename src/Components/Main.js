@@ -8,7 +8,7 @@ export default function Main() {
     const [currQuack, setQuake] = useState(() => null);
     const [changed, setChanged] = useState(() => true)
     let initialFilterObj = {
-        all: true,
+        all: true, 
         minyear: "",
         maxyear: "",
         minmagn: "",
