@@ -5,8 +5,8 @@ export default function Uutinen(props) {
         <div className="card mb-2 kortti border border-warning col-4 ">
             <div className="card-body">
                 <h5 className="card-title">{props.text}</h5>
-                <p className="card-text">Uutisen sisältö</p>
-                <a href={props.link}>Linkki</a>
+                <p className="card-text">{props.snippet}</p>
+                <a href={props.link}>{props.linktext}</a>
             </div>
         </div>
     );
