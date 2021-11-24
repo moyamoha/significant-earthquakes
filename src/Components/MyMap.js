@@ -52,19 +52,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
     let position = filterObj.all ? [0,0] : getCenter(data);
 
     const markerClicked = (e) => {
-       
-        
-        setCurrentQuake(e.target.feature)
-
-        //console.log(currentQuake.properties.i_d)
-        //console.log(e.target.feature.properties.i_d)
-       
-     
-       
-       
-    
-            
-    
+        setCurrentQuake(e.target.feature);
     }
 
 
@@ -97,7 +85,8 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
                
                 marker.feature = item;
                 marker.bindPopup( function () {
-                    return item.properties.country + " " + item.properties.year + " " + "["+item.properties.coordinates+"]";
+                    let p = item.properties;
+                    return `${p.country} ${p.year} [${p.coordinates}]`
                 }).on('click', markerClicked);
                 markers.addLayer(marker)
             }
@@ -112,7 +101,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
     
    
     return (
-        <div className="px-0 mt-0 col-9">
+        <div className="px-0 my-3 ml-3 col-9">
             <MapContainer className="map col-9 w-100" center={position} zoom={changed ? 2 : zoom} style={{height:"500px"}}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright%22%3EOpenStreetMap</a> contributors'

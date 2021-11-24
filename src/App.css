@@ -5,13 +5,14 @@
 .maparea {
   background-color: white;
   border-radius: 15px;
+
 }
 .kortti, .map {
   border-radius: 10px;
   transition: all .4s ease-in-out;
 }
 .kortti:hover {
-  background-color: #ccc;
+  background-color: #ddd;
   
 }
 
@@ -19,6 +20,7 @@
   overflow-y: scroll;
   padding-top: 10px;
   height: 85vh;
+  border-left: 1px solid #28a745;
 }
 
 .linkki {

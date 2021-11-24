@@ -45,9 +45,9 @@ export default function Uutiset({quake}) {
 
     if(tulokset === null) {
         return (
-            <div className="col-12 pb-2 px-3 uutispalkki border border-info h-50 mb-3">
+            <div className="col-12 pb-2 my-3 uutispalkki h-50 px-3 pt-3">
                 {/* <strong>Valitse jokin maanjäristyskartalta</strong> */}
-                {/* Näiden pitää poistua. Mutta tarvitaan vielä stailaamista ilman että tehtäisiin apicalleja*/}
+                {/* Näiden pitää poistua. Mutta tarvitaan vielä stailaamista varten ilman että tehtäisiin apicalleja*/}
                 <Uutinen link={esimerkkidata.results[0].link} text= {esimerkkidata.results[0].title} linktext= "Siirry uutiseen" snippet={esimerkkidata.results[0].description} />
                 <Uutinen link={esimerkkidata.results[1].link} text= {esimerkkidata.results[1].title} linktext= "Siirry uutiseen" snippet={esimerkkidata.results[1].description} />
                 <Uutinen link={esimerkkidata.results[2].link} text= {esimerkkidata.results[2].title} linktext= "Siirry uutiseen" snippet={esimerkkidata.results[2].description} />
@@ -57,7 +57,7 @@ export default function Uutiset({quake}) {
         );
     } else {
         return ( // Tässä tapauksessa haku on onnistunut
-            <div className="col-12 pb-2 px-3 mb-3 uutispalkki border border-info">
+            <div className="col-12 pb-2 my-3 uutispalkki h-50 px-3 pt-3">
                 {/* tulokset.results.map(uut => <Uutinen text={uut.title} snippet={uut.description} link={uut.link} linktext="Siirry uutiseen"></Uutinen>) */}
             </div> 
         )

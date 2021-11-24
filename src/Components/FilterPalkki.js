@@ -51,7 +51,7 @@ const FilterPalkki = ({setQuake,setChanged, filterObj, setFilterObj}) => {
 
     return (
         <div className="col-2 listapalkki">
-            <label for="opt">Year:</label>
+            <label htmlFor="opt">Year:</label>
             <div id="opt"> 
                 <div>from...</div> 
                 <input id="minYearLimit" type="number" placeholder="year" min="0" max="2021" onChange={(e) => changeFilterObj(e.target.value, smaxyear, loc, sminMagn, smaxMagn, sminDeaths,smaxDeaths)}/>
@@ -62,12 +62,12 @@ const FilterPalkki = ({setQuake,setChanged, filterObj, setFilterObj}) => {
            <div> 
             <input list="loclist" id="searchTerm" type="text" placeholder="Enter location name..." onChange={(e) => {changeFilterObj(sminyear, smaxyear, e.target.value, sminMagn, smaxMagn, sminDeaths,smaxDeaths)}}/>
              <datalist id="loclist">
-                {maat.map(item => <option> {item}</option>)}    
+                {maat.map(item => <option key={item}> {item}</option>)}    
             </datalist>
            </div>
             <label>Magnitude:</label>
             <div>
-                <div>form..</div>
+                <div>from..</div>
             <input placeholder="min" type="number" id="magnitudeMin" min="0" max="12" onChange={(e) => {changeFilterObj(sminyear, smaxyear, loc, e.target.value, smaxMagn, sminDeaths,smaxDeaths)}}></input>
             <div>to..</div>
             <input placeholder="max" type="number" id="magnitudeMax"  min="0" max="12" onChange={(e) => {changeFilterObj(sminyear, smaxyear, loc, sminMagn, e.target.value, sminDeaths,smaxDeaths)}}></input>

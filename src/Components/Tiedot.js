@@ -3,9 +3,9 @@ import React from 'react';
 export default function Tiedot({quake}) {
 
     
-    let props = quake ? Object.keys(quake["properties"]) : [];
+/*     let props = quake ? Object.keys(quake["properties"]) : [];
     
-    props = props.filter((x) => x !== "i_d")
+    props = props.filter((x) => x !== "i_d") */
     //props = props.filter((x) => x !== "i_d" && x !== "eq_mag_mfa"&&  x !==  "total_damage_description"&& 
     //x !== "region_code" && x !== "intensity" && x !== "location_name" && x !== "eq_mag_unk" && x !== "coordinates"
     //&& x!=="eq_mag_ms")
