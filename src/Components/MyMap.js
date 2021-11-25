@@ -121,7 +121,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
                 />
                 <Pisteet changed={changed} setChanged={setChanged}/>
             </MapContainer>
-            <div style={{textAlign: "center", }}>Found {data.length} records</div>
+           
         </div>
     )
 
