@@ -6,7 +6,6 @@ import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import 'leaflet.markercluster/dist/leaflet.markercluster';
 import L from 'leaflet';
-import { Wrld, WrldMap } from "wrld-react";
 
 
 
@@ -110,44 +109,18 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
         
         return null;
     }
-
     
    
-
     return (
         <div className="px-0 mt-0 col-9">
-               <div>
-        
-      <WrldMap
-        apiKey={"0743c2e202bef551d9c090e17401c311"}
-        containerStyle={{
-          width: "1100px",
-          height: "600px"
-        }}
-        mapOptions={{
-          center: [56.459604, 20.977816],
-         zoom: 2
-        }}
-       
-        onInitialStreamingComplete={(map) => {
-            
-            
-            for(let item of data){
-                Wrld.marker(item.properties.coordinates).addTo(map);
-            }
-            
-         
+            <MapContainer className="map col-9 w-100" center={position} zoom={changed ? 2 : zoom} style={{height:"500px"}}>
+                <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright%22%3EOpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
-
-
-            
-
-          }}
-
-      >
-       
-      </WrldMap>
-    </div>
+                />
+                <Pisteet changed={changed} setChanged={setChanged}/>
+            </MapContainer>
            
         </div>
     )
