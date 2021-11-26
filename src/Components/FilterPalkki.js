@@ -1,4 +1,3 @@
-
 import data from './../data/korjattu_geo.json';
 import React, { useState } from 'react';
 
@@ -38,11 +37,13 @@ const FilterPalkki = ({ setQuake, setChanged, filterObj, setFilterObj }) => {
         setsMinMagn(minmagn);
         setsMaxDeaths(maxdeath);
         setsMinDeaths(mindeath);
+
         // console.log(e.target.value)
         //let year = filterObj.year //näiden tarkoitus päivittyä kun lisätään hakuehtoja?
         let eq_primary = filterObj.eq_primary
         //let year = filterObj.year
         //console.log(e.target.textContent)
+
 
         let uusiObj = {
             all: false,
@@ -64,6 +65,7 @@ const FilterPalkki = ({ setQuake, setChanged, filterObj, setFilterObj }) => {
             setChanged(false)
         }
     }
+
 
 
     const divstyle = {
@@ -111,6 +113,7 @@ const FilterPalkki = ({ setQuake, setChanged, filterObj, setFilterObj }) => {
                 maat {maat.length}:
                 {maat.map(item => <li onClick={(e) => changeFilterObj(e)}>{item}</li>)}
           </ul> */}
+
 
         </div>
     );
