@@ -1,17 +1,6 @@
 import React from 'react';
 
 export default function Tiedot({quake}) {
-
-    
-/*     let props = quake ? Object.keys(quake["properties"]) : [];
-    
-    props = props.filter((x) => x !== "i_d") */
-    //props = props.filter((x) => x !== "i_d" && x !== "eq_mag_mfa"&&  x !==  "total_damage_description"&& 
-    //x !== "region_code" && x !== "intensity" && x !== "location_name" && x !== "eq_mag_unk" && x !== "coordinates"
-    //&& x!=="eq_mag_ms")
-    
-
-    //tätä pitää vielä siistiä...
     
    let name = quake ? <div> <strong>Country name: </strong> {quake.properties["country"] ? quake.properties["country"]: "Not available" }</div>: <div></div>
    let magnitude = quake ? <div> <strong>Magnitude: </strong> {quake.properties["eq_primary"] ? quake.properties["eq_primary"]: "Not available"}</div>: <div></div>
