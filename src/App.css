@@ -26,6 +26,14 @@ th, td {
   
 }
 
+.listapalkki {
+  overflow-y: scroll;
+}
+
+.listapalkki input {
+  width: 100%;
+}
+
 .uutispalkki {
   overflow-y: scroll;
   padding-top: 10px;
