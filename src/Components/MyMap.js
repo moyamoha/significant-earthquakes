@@ -101,7 +101,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
     
    
     return (
-        <div className="px-0 my-3 ml-3 col-9">
+        <div className="px-5 pt-4 col-9">
             <MapContainer className="map col-9 w-100" center={position} zoom={changed ? 2 : zoom} style={{height:"500px"}}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright%22%3EOpenStreetMap</a> contributors'

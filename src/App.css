@@ -5,15 +5,14 @@
 .maparea {
   background-color: white;
   border-radius: 15px;
-
+  
 }
 .kortti, .map {
   border-radius: 10px;
   transition: all .4s ease-in-out;
 }
 .kortti:hover {
-  background-color: #ddd;
-  
+  background-color: #ddd; 
 }
 
 .listapalkki {
