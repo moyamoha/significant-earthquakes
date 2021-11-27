@@ -58,7 +58,7 @@ export default function Uutiset({quake, saaHakea, setSaaHakea}) {
     } else {
         return ( // Tässä tapauksessa haku on onnistunut
             <div className="col-12 pb-2 my-3 uutispalkki h-50 px-3 pt-3">
-                {tulokset.results.map(uut => <Uutinen text={uut.title} snippet={uut.description} link={uut.link} linktext="Siirry uutiseen"></Uutinen>)}
+                {tulokset.results.map(uut => <Uutinen key={uut.title} text={uut.title} snippet={uut.description} link={uut.link} linktext="Siirry uutiseen"></Uutinen>)}
             </div> 
         )
     }
