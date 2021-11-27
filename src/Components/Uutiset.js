@@ -16,7 +16,7 @@ let axios = require("axios").default;
 export default function Uutiset({quake, saaHakea, setSaaHakea}) {
     let [tulokset, setTulokset] = useState(null);
     useEffect(() => {
-        if (quake != null && saaHakea) { // Toi on laitettu sitä varten, ettei haeta vaikka klikataankin markereista. Pitää poistaa lopullisessa tuotteessa 
+        if (quake != null && 2==3) { // Toi on laitettu sitä varten, ettei haeta vaikka klikataankin markereista. Pitää poistaa lopullisessa tuotteessa 
             const searchString = "earthquake+" + quake.properties["country"] + "+year+" + quake.properties["year"];
             const encodedString = encodeURI(searchString);
             console.log(searchString);

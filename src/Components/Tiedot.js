@@ -19,7 +19,7 @@ export default function Tiedot({quake}) {
         };
         let kentat = Object.keys(arvot);
         return (
-            <div id="tiedot" className="col-3 pt-3" style={{padding:'5px',textAlign:"justify", lineHeight:"1.8rem"}}>
+            <div id="tiedot" className="col-3 pt-3 px-2" style={{padding:'5px',textAlign:"justify", lineHeight:"1.8rem"}}>
                 { kentat.map(knt => <div><strong>{knt}</strong>: <span>{quake.properties[knt] ? quake.properties[knt] : "N/A" }</span></div>) }
             </div>
         );
