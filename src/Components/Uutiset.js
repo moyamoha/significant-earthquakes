@@ -18,7 +18,6 @@ export default function Uutiset({quake, saaHakea, setSaaHakea}) {
     useEffect(() => {
         if (quake != null && 2==3) { // Toi on laitettu sitä varten, ettei haeta vaikka klikataankin markereista. Pitää poistaa lopullisessa tuotteessa 
             const searchString = "earthquake+" + quake.properties["country"] + "+year+" + quake.properties["year"];
-            const encodedString = encodeURI(searchString);
             console.log(searchString);
         
             let options = {
@@ -35,11 +34,9 @@ export default function Uutiset({quake, saaHakea, setSaaHakea}) {
             axios.request(options).then(function (response) {
               let haku = {};
               haku = response.data;
-              console.log(haku)
               setTulokset(haku);
               setSaaHakea(false);
             }).catch(function (error) {
-                console.error(error);
                 setTulokset(null);
                 setSaaHakea(false)
                 });
@@ -49,10 +46,7 @@ export default function Uutiset({quake, saaHakea, setSaaHakea}) {
     if(tulokset === null) {
         return (
             <div className="col-12 pb-2 my-3 uutispalkki h-50 px-3 pt-3">
-                {/* <strong>Valitse jokin maanjäristyskartalta</strong> */}
-                {/* Näiden pitää poistua. Mutta tarvitaan vielä stailaamista varten ilman että tehtäisiin apicalleja*/}
-                <Uutinen link={esimerkkidata.results[0].link} text= {esimerkkidata.results[0].title} linktext= "Siirry uutiseen" snippet={esimerkkidata.results[0].description} />
-                <Uutinen link={esimerkkidata.results[1].link} text= {esimerkkidata.results[1].title} linktext= "Siirry uutiseen" snippet={esimerkkidata.results[1].description} />
+                <strong>Valitse jokin maanjäristyskartalta</strong>
             </div>
         );
     } else {
