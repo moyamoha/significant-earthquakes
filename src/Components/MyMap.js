@@ -109,9 +109,12 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
         
         return null;
     }
+
+    
     
    
     return (
+        
         <div className="px-4 mt-3">
             <MapContainer className="map col-9 w-100" center={position} zoom={changed ? 2 : zoom} style={{height:"500px"}}>
                 <TileLayer
@@ -121,9 +124,11 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
                 />
                 <Pisteet changed={changed} setChanged={setChanged}/>
             </MapContainer>
-            <div style={{textAlign: "center", }}>Found {data.length} records</div>
+            <div style={{textAlign: "center", }}>{data.length !== 0 ? <p> Found {data.length} records </p> : <p>Found 0 records, check the search queries.</p>}</div>
         </div>
     )
+        
 
 }
+
 export default MyMap;
