@@ -28,7 +28,7 @@ function getCenter(data) {
     return [data.length === 0 ? 0: lat/data.length, data.length === 0 ? 0: lon/data.length].reverse()
 }
 
-function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake}) {
+function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
     let data = geo.features.filter(item => {
         
         if (filterObj.all) {return true
@@ -52,7 +52,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
     let position = filterObj.all ? [0,0] : getCenter(data);
 
     const markerClicked = (e) => {
-        setCurrentQuake(e.target.feature);
+        setCurrentQuake(e.target.feature, true);
     }
 
 
