@@ -1,14 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import  Uutinen  from './Uutinen';
 
-//.env -tiedosto projektin juurikansiossa jonne laitetaan api key. Laitetaan
-//-env gitignoreen.
-
-//uutisten haku toimii, mutta ei päivity sivulle. Uutiset löytyy ja ne tallennetaan
-//objektiksi, edellinen uutinen tulee kun painaa seuraavaa järistystä.
-
-//palautettavien uutisten mappaus? nappi, josta niitä saa lisää näkyviin?
-
 require('dotenv').config()
 
 let axios = require("axios").default;
