@@ -68,9 +68,6 @@ const FilterPalkki = ({ setQuake, setChanged, filterObj, setFilterObj }) => {
 
 
 
-    const divstyle = {
-
-    }
 
     return (
         <div className="col-2 listapalkki ">
@@ -79,7 +76,7 @@ const FilterPalkki = ({ setQuake, setChanged, filterObj, setFilterObj }) => {
 
 
             <div id="opt" >
-                <label className="h5 container p-0" for="opt">Year:</label>
+                <label className="h5 container p-0" >Year:</label>
                 <div><small>from...</small></div>
                 <input id="minYearLimit" type="number" placeholder="year" min="0" max="2021" onChange={(e) => changeFilterObj(e.target.value, smaxyear, loc, sminMagn, smaxMagn, sminDeaths, smaxDeaths)} />
                 <div><small>to..</small></div>
@@ -90,7 +87,7 @@ const FilterPalkki = ({ setQuake, setChanged, filterObj, setFilterObj }) => {
                 <label className="h5 container p-0 pt-3 ">Location:</label>
                 <input list="loclist" id="searchTerm" type="text" placeholder="Enter location name..." onChange={(e) => { changeFilterObj(sminyear, smaxyear, e.target.value, sminMagn, smaxMagn, sminDeaths, smaxDeaths) }} />
                 <datalist id="loclist">
-                    {maat.map(item => <option> {item}</option>)}
+                    {maat.map(item => <option key={item}> {item}</option>)}
 
                 </datalist>
             </div>
