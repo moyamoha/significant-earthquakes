@@ -1,15 +1,7 @@
 import React from 'react';
 
-export default function Tiedot({quake}) {
 
-    
-    let props = quake ? Object.keys(quake["properties"]) : [];
-    
-    props = props.filter((x) => x !== "i_d")
-    //props = props.filter((x) => x !== "i_d" && x !== "eq_mag_mfa"&&  x !==  "total_damage_description"&& 
-    //x !== "region_code" && x !== "intensity" && x !== "location_name" && x !== "eq_mag_unk" && x !== "coordinates"
-    //&& x!=="eq_mag_ms")
-    
+export default function Tiedot({quake}) {
 
     //tätä pitää vielä siistiä...
     
@@ -32,12 +24,7 @@ export default function Tiedot({quake}) {
        }
     }
    
-   catch{
-
-   }
-   
-   //date = quake.properties["month"] ?  <div><strong>Date: </strong>  {quake.properties["month"]}.{quake.properties["year"]}</div>:  date 
-   //date = quake.properties["day"] ?    <div><strong>Date: </strong> {quake.properties["day"]}.{quake.properties["month"]}.{quake.properties["year"]}</div>:  date
+   catch{}
 
    
    
@@ -60,8 +47,8 @@ export default function Tiedot({quake}) {
   
                     return (
             <div id="tiedot" className="col-3" style={{padding:'5px',textAlign:"justify", lineHeight:"1.8rem"}}>
-                {content}
-               
             </div>
-    );
+        );
+    }
+
 }

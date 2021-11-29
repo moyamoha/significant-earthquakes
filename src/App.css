@@ -1,3 +1,7 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 #main {
   height: 100vh;
 }
@@ -22,8 +26,7 @@ h3, th, td {
   transition: all .4s ease-in-out;
 }
 .kortti:hover {
-  background-color: #ccc;
-  
+  background-color: #ddd; 
 }
 
 .listapalkki {
@@ -38,6 +41,7 @@ h3, th, td {
   overflow-y: scroll;
   padding-top: 10px;
   height: 85vh;
+  border-left: 1px solid #28a745;
 }
 
 .linkki {

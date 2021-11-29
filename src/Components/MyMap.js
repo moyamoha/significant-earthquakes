@@ -28,7 +28,7 @@ function getCenter(data) {
     return [data.length === 0 ? 0: lat/data.length, data.length === 0 ? 0: lon/data.length].reverse()
 }
 
-function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake}) {
+function MyMap({changed, setChanged, filterObj, setCurrentQuake}) {
     let data = geo.features.filter(item => {
         
         if (filterObj.all) {return true
@@ -52,19 +52,7 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
     let position = filterObj.all ? [0,0] : getCenter(data);
 
     const markerClicked = (e) => {
-       
-        
-        setCurrentQuake(e.target.feature)
-
-        //console.log(currentQuake.properties.i_d)
-        //console.log(e.target.feature.properties.i_d)
-       
-     
-       
-       
-    
-            
-    
+        setCurrentQuake(e.target.feature, true);
     }
 
 
@@ -99,7 +87,8 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
                
                 marker.feature = item;
                 marker.bindPopup( function () {
-                    return item.properties.country + " " + item.properties.year + " " + "["+item.properties.coordinates+"]";
+                    let p = item.properties;
+                    return `${p.country} ${p.year} [${p.coordinates}]`
                 }).on('click', markerClicked);
                 markers.addLayer(marker)
             }
