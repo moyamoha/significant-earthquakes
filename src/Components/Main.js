@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 import MapArea from './MapArea';
 import Uutiset from './Uutiset';
 import FilterPalkki from './FilterPalkki';
+import Tiedot from './Tiedot';
 
 export default function Main() {
     const [currQuack, setQuake] = useState(() => null);
     const [changed, setChanged] = useState(() => true)
     let initialFilterObj = {
-        all: true,
+        all: true, 
         minyear: "",
         maxyear: "",
         minmagn: "",
@@ -22,8 +23,11 @@ export default function Main() {
         <div className="container-fluid pt-3" id="main">
             <div className="row">
                 <FilterPalkki setQuake={setQuake} setChanged={setChanged} filterObj={filterObj} setFilterObj={setFilterObj}/> 
-                <MapArea setChanged={setChanged} changed={changed} quake={currQuack} filterObj={filterObj} changeQuake={setQuake}/>
-                <Uutiset quake={currQuack}/>
+                <div className="col-10">
+                    <MapArea setChanged={setChanged} changed={changed} quake={currQuack} filterObj={filterObj} changeQuake={setQuake}/>
+                    <hr></hr>
+                    <Uutiset quake={currQuack}/>
+                </div>
             </div>
       </div>
     )

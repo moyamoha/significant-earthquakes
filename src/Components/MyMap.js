@@ -83,13 +83,15 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
             setChanged(false)
             map.panTo(position)
         }
-
+        
+        
         map.setMaxZoom(12)
         map.setMinZoom(2)
+        
         var markers = L.markerClusterGroup()
         
         
-        if(changed == true){
+        if(changed === true){
             for (let item of data) {
             
             if (item.geometry) {
@@ -112,19 +114,20 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
 
     
     
+    
    
     return (
-        
-        <div className="px-4 mt-3">
-            <MapContainer className="map col-9 w-100" center={position} zoom={changed ? 2 : zoom} style={{height:"500px"}}>
+        <div className="px-0 mt-0 col-9">
+            <MapContainer   worldCopyJump= "true" className="map col-9 w-100" center={position} zoom={changed ? 2 : zoom} style={{height:"500px"}}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright%22%3EOpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    
 
                 />
                 <Pisteet changed={changed} setChanged={setChanged}/>
             </MapContainer>
-            <div style={{textAlign: "center", }}>{data.length !== 0 ? <p> Found {data.length} records </p> : <p>Found 0 records, check the search queries.</p>}</div>
+           
         </div>
     )
         
