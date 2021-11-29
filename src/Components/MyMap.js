@@ -111,6 +111,9 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
         
         return null;
     }
+
+    
+    
     
    
     return (
@@ -127,6 +130,8 @@ function MyMap({changed, setChanged, filterObj, setCurrentQuake , currentQuake})
            
         </div>
     )
+        
 
 }
+
 export default MyMap;
