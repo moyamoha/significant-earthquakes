@@ -68,14 +68,11 @@ const FilterPalkki = ({ setQuake, setChanged, filterObj, setFilterObj }) => {
 
 
 
-    const divstyle = {
-
-    }
 
     return (
         <div className="col-2 listapalkki ">
             <div id="opt" >
-                <label className="h5 container p-0" htmlFor="opt">Year:</label>
+                <label className="h5 container p-0" >Year:</label>
                 <div><small>from...</small></div>
                 <input id="minYearLimit" type="number" placeholder="year" min="0" max="2021" onChange={(e) => changeFilterObj(e.target.value, smaxyear, loc, sminMagn, smaxMagn, sminDeaths, smaxDeaths)} />
                 <div><small>to..</small></div>

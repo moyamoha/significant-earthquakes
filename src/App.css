@@ -5,11 +5,21 @@
 #main {
   height: 100vh;
 }
+table{
+  
+  
+}
+h3, table tr:nth-of-type(odd) {
+  background-color: #faf8f8;
+}
+h3, th, td {
+  padding: 5px;
+  border-bottom: 1px solid #dddddd;
+}
 
 .maparea {
   background-color: white;
-  border-radius: 15px;
-  
+  border-radius: 0px;
 }
 .kortti, .map {
   border-radius: 10px;
