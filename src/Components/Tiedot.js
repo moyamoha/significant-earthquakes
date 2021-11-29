@@ -41,7 +41,7 @@ export default function Tiedot({quake}) {
 
    
    
-   let content = 
+   let content = quake ?
                <table >  {name}
             
                {magnitude}
@@ -52,7 +52,7 @@ export default function Tiedot({quake}) {
                
                {date}
               
-               </table>
+               </table>:<h3>Select earthquake to display infromation</h3>
                 
                     
     //let content = quake ? props.map(x => <div  key={x} ><strong> {x}:</strong> <span>{quake.properties[x]} </span></div>) :
