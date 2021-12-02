@@ -49,21 +49,21 @@ export default function Uutiset({quake, saaHakea, setSaaHakea}) {
         )
     }
     */
+
 //tehty vanhalla versiolla, että saan testattua esimerkkidatalla. Helppo integroida sitten masteriin.
 //Tällä hetkellä tulee yksi uutinen per slaidi, eka slaidi tyhjä, koska
-//ekaan pitää saada classiksi active, että carousel toimii ja mapissa se tulisi kaikkiin.
-//TODO: muotoilu, monta uutista yhdelle slaidille?, tee tässä valmiiksi ja sovella sitten masterin versioon.
-
+//ekassa pitää olla classina active, että carousel toimii, ja mapissa se tulee kaikkiin.
+//TODO: muotoilu? monta uutista yhdelle slaidille miten?
        return (
            <>
            
-   <div class="container ml-0 pl-0">
+   <div class="container">
    <div class="row">
        {/* news-teksti vasempaan yläkulmaan */}
        <div class="col-8">
            <h3 class="mb-3">News</h3>
        </div>
-       {/* napit oikealle ylös, nappien linkki on index.html:ssä */}
+       {/* napit oikealle ylös, nappien linkki on index.html:ssä awesome css */}
        <div class="col-2 text-right">
            <a class="btn btn-secondary mb-3 mr-1" href="#newsCarousel" role="button" data-bs-slide="prev">
                <i class="fa fa-arrow-left"></i>
@@ -77,16 +77,27 @@ export default function Uutiset({quake, saaHakea, setSaaHakea}) {
            <div className="col-10 pb-2 mt-3 uutispalkki h-50 px-3 pt-3">
            <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
            <div class="carousel-inner">
-           <div class="carousel-item active"> </div>
+           <div class="carousel-item active">
+               
+           <div className="card mb-2 kortti border border-warning d-block">
+            <div className="card-body">
+                <h5 className="card-title">News</h5>
+                <p className="card-text">Description</p>
+                <a style={{textDecoration: 'none'}} href='//'>Link</a>
+            </div>
+             </div>
+
+            </div>
+
            {esimerkkidata.results.map(uut => <div class="carousel-item"> <Uutinen key={uut.title} text={uut.title} snippet={uut.description} link={uut.link} linktext="Link"></Uutinen>             </div>)}
     
-              </div>
-   
-               </div>
-        
-               </div>
-               </div>
-               </> 
+            </div>
+
+            </div>
+    
+            </div>
+            </div>
+            </> 
    
    
    
