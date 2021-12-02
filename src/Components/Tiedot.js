@@ -1,10 +1,11 @@
 import React from 'react';
 
 
+
 export default function Tiedot({quake}) {
 
     //tätä pitää vielä siistiä...
-    
+
    let name = quake ? <tr> <td><strong>Location: </strong></td> {quake.properties["country"] ? <td> {quake.properties["country"]}</td>: <td> Not available </td>}</tr>: <div></div>
    let magnitude = quake ? <tr> <td><strong>Magnitude: </strong></td> {quake.properties["eq_primary"] ? <td> {quake.properties["eq_primary"]}</td>: <td> Not available </td> }</tr>: <div></div>
    let deaths = quake ? <tr> <td><strong>Deaths: </strong></td> {quake.properties["deaths"] ? <td> {quake.properties["deaths"]}</td>: <td> Not available </td> }</tr>: <div></div>
@@ -25,20 +26,9 @@ export default function Tiedot({quake}) {
     }
    
    catch{}
-
-   
    
    let content = quake ?
-               <table >  {name}
-            
-               {magnitude}
-               
-               {deaths}
-               
-               {houses}
-               
-               {date}
-              
+               <table >  
                </table>:<h3>Select earthquake to display infromation</h3>
                 
                     
@@ -49,6 +39,5 @@ export default function Tiedot({quake}) {
             <div id="tiedot" className="col-3" style={{padding:'5px',textAlign:"justify", lineHeight:"1.8rem"}}>
             </div>
         );
-    }
 
 }
