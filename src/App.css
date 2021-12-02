@@ -38,10 +38,10 @@ h3, th, td {
 }
 
 .uutispalkki {
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   padding-top: 10px;
   height: 85vh;
-  border-left: 1px solid #28a745;
+ /* border-left: 1px solid #28a745;*/
 }
 
 .linkki {

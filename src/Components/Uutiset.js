@@ -57,24 +57,24 @@ export default function Uutiset({quake, saaHakea, setSaaHakea}) {
        return (
            <>
            
-   <div class="container">
+   <div class="container px-0 mx-0">
    <div class="row">
        {/* news-teksti vasempaan yläkulmaan */}
-       <div class="col-8">
-           <h3 class="mb-3">News</h3>
+       <div class="col-7">
+           <h3 class="mt-2">News</h3>
        </div>
        {/* napit oikealle ylös, nappien linkki on index.html:ssä awesome css */}
        <div class="col-2 text-right">
-           <a class="btn btn-secondary mb-3 mr-1" href="#newsCarousel" role="button" data-bs-slide="prev">
+           <a class="btn btn-secondary mt-2 mr-1" href="#newsCarousel" role="button" data-bs-slide="prev">
                <i class="fa fa-arrow-left"></i>
            </a>
-           <a class="btn btn-secondary mb-3 text-right" href="#newsCarousel" role="button" data-bs-slide="next">
+           <a class="btn btn-secondary mt-2 mr-1 text-right" href="#newsCarousel" role="button" data-bs-slide="next">
                <i class="fa fa-arrow-right"></i>
            </a>
        </div>
        {/*carousel, mapataan jokainen uutinen omaksi esineeksi siihen */}
        </div>   
-           <div className="col-10 pb-2 mt-3 uutispalkki h-50 px-3 pt-3">
+           <div className="col-9 mt-1 uutispalkki h-50 px-1 pt-1">
            <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
            <div class="carousel-inner">
            <div class="carousel-item active">
@@ -82,19 +82,17 @@ export default function Uutiset({quake, saaHakea, setSaaHakea}) {
            <div className="card mb-2 kortti border border-warning d-block">
             <div className="card-body">
                 <h5 className="card-title">News</h5>
-                <p className="card-text">Description</p>
-                <a style={{textDecoration: 'none'}} href='//'>Link</a>
+                <p className="card-text">Use the arrows to cycle through news</p>
+                <a style={{textDecoration: 'none'}} href=''>Link</a>
             </div>
-             </div>
-
             </div>
 
-           {esimerkkidata.results.map(uut => <div class="carousel-item"> <Uutinen key={uut.title} text={uut.title} snippet={uut.description} link={uut.link} linktext="Link"></Uutinen>             </div>)}
+            </div>
+
+           {esimerkkidata.results.map(uut => <div class="carousel-item"> <Uutinen key={uut.title} text={uut.title} snippet={uut.description} link={uut.link} linktext="Link"></Uutinen> </div>)}
     
             </div>
-
-            </div>
-    
+            </div>    
             </div>
             </div>
             </> 
