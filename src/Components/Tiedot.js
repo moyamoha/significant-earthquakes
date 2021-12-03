@@ -3,9 +3,7 @@ import React from 'react';
 export default function Tiedot({quake}) {
 
     
-    let props = quake ? Object.keys(quake["properties"]) : [];
     
-    props = props.filter((x) => x !== "i_d")
     //props = props.filter((x) => x !== "i_d" && x !== "eq_mag_mfa"&&  x !==  "total_damage_description"&& 
     //x !== "region_code" && x !== "intensity" && x !== "location_name" && x !== "eq_mag_unk" && x !== "coordinates"
     //&& x!=="eq_mag_ms")
@@ -23,9 +21,9 @@ export default function Tiedot({quake}) {
    let date =  quake ? <tr> <td><strong>Date: </strong></td> {quake.properties["year"] ? <td> {quake.properties["year"]}</td>: "Not available" }</tr>: <tr> <td></td> </tr>
    
    try{
-    date = quake.properties["month"] ?  <tr><strong>Date: </strong>  <td>{quake.properties["month"]}.{quake.properties["year"]}</td></tr>:  date
+    date = quake.properties["month"] ?  <tr><strong>Date: (DD/MM/YYYY) </strong> (DD/MM/YYYY) <td>{quake.properties["month"]}.{quake.properties["year"]}</td></tr>:  date
     try{
-        date = quake.properties["day"] ?    <tr><td><strong>Date: </strong></td><td> {quake.properties["day"]}.{quake.properties["month"]}.{quake.properties["year"]}</td></tr>: date
+        date = quake.properties["day"] ?    <tr><td><strong>Date:  </strong>(DD/MM/YYYY)</td><td> {quake.properties["day"]}.{quake.properties["month"]}.{quake.properties["year"]}</td></tr>: date
        }
        catch{
            
@@ -52,12 +50,22 @@ export default function Tiedot({quake}) {
                
                {date}
               
-               </table>:<h3>Select earthquake to display infromation</h3>
+               </table> 
+               :<h3>Select earthquake to display infromation</h3>
                 
                     
     //let content = quake ? props.map(x => <div  key={x} ><strong> {x}:</strong> <span>{quake.properties[x]} </span></div>) :
    // <span>Click a record to see more about it</span>
   
+
+            let props = quake ? Object.keys(quake["properties"]) : [];
+    
+             props = props.filter((x) => x !== "i_d")
+             
+             content = quake ? props.map(x => <tr  key={x} ><td> {x}:</td> <td>{quake.properties[x]} </td></tr>) :
+             <h3>Select earthquake to display infromation</h3>
+            content = <table>{content}</table>
+
                     return (
             <div id="tiedot" className="col-3" style={{padding:'5px',textAlign:"justify", lineHeight:"1.8rem"}}>
                 {content}
