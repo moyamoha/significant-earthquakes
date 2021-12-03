@@ -1,0 +1,18 @@
+{
+    "welcome_to_react":" Tervetuloa react-i18nextiin, jne hauki on kala",
+    "home": "Koti",
+    "what_to_do": "Mitä tehdä maanjäristyksen sattuessa?",
+    "knowledge": "Mikä aiheuttaa maanjäristyksiä?",
+    "year": "Vuosi",
+    "location": "Paikka",
+    "loc_name": "Kirjoita maan nimi",
+    "magnitude": "Magnitudi",
+    "deaths": "Kuolemat",
+    "nothing_to_show":"Löytyi 0 maanjäristystä, tarkista hakuehdot",
+    "showing": "Maanjäristyksiä löytyi: ",
+    "news": "Uutisartikkelit",
+    "choose":"Valitse maanjäristys kartalta",
+    "language": "Kieli",
+    "from": "mistä",
+    "to":"mihin"
+}
