@@ -5,7 +5,7 @@ export default function Tiedot({ quake }) {
   let props = quake ? Object.keys(quake["properties"]) : [];
 
   props = props.filter((x) => x !== "i_d");
-  let t = useTranslation()
+  let {t} = useTranslation()
   let content = quake ? (
     props.map((x) => (
       <div className="kentta">
