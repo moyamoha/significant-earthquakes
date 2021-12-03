@@ -1,10 +1,11 @@
 import React from "react";
+import { useTranslation } from "react-i18next"; //use translation lisätty
 
 export default function Tiedot({ quake }) {
   let props = quake ? Object.keys(quake["properties"]) : [];
 
   props = props.filter((x) => x !== "i_d");
-
+  let t = useTranslation()
   let content = quake ? (
     props.map((x) => (
       <div className="kentta">
@@ -14,9 +15,9 @@ export default function Tiedot({ quake }) {
       </div>
     ))
   ) : (
-    <h3>Select earthquake to display infromation</h3>
+    <h3>{t('choose')}</h3>
   );
-
+  
   return (
     <div
       id="tiedot"

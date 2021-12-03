@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import Uutinen from "./Uutinen";
+import React, {useEffect, useState} from 'react';
+import  Uutinen  from './Uutinen';
+import { useTranslation } from "react-i18next"; //use translation lisätty
 
 require("dotenv").config();
 
