@@ -75,7 +75,7 @@ export default function Uutiset({quake, saaHakea, setSaaHakea}) {
        {/*carousel, mapataan jokainen uutinen omaksi esineeksi siihen */}
        </div>   
            <div className="col-9 mt-1 uutispalkki h-50 px-1 pt-1">
-           <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+           <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" >
            <div class="carousel-inner">
            <div class="carousel-item active">
                
