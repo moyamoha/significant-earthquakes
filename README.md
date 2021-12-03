@@ -68,3 +68,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# tarvittavat asennukset kieliasetuksille
+
+### `npm install react-i18next i18next`
+Framework kielen vaihtamiselle
+
+### `npm install i18next-http-backend`
+tällä saadaan ohjelma hakemaan käännökset .json-tiedostoista
+
+### `npm install --dev flag-icon-css`
+tällä saadaan lippujen ikonit näkyviin

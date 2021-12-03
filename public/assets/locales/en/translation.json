@@ -1,0 +1,18 @@
+{
+    "welcome_to_react": "Welcome to React and react-i18next",
+    "home": "Home",
+    "what_to_do": "What to do in case of an earthquake?",
+    "knowledge": "What causes earthquakes?",
+    "year": "Year",
+    "location": "Location",
+    "loc_name": "Enter location name",
+    "magnitude": "Magnitude",
+    "deaths": "Deaths",
+    "nothing_to_show":"Found 0 records, check the search queries",
+    "showing": "records found: ",
+    "news": "News articles",
+    "choose":"Choose an earthquake form the map",
+    "language": "Language",
+    "from": "from",
+    "to":"to"
+}

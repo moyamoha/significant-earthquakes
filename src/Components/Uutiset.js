@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import  Uutinen  from './Uutinen';
+import { useTranslation } from "react-i18next";
 
 require('dotenv').config()
 
 let axios = require("axios").default;
+
 
 export default function Uutiset({quake, saaHakea, setSaaHakea}) {
     let [tulokset, setTulokset] = useState(null);
@@ -34,11 +36,12 @@ export default function Uutiset({quake, saaHakea, setSaaHakea}) {
                 });
             }
     })
-
+    const { t } = useTranslation()
+    
     if(tulokset === null) {
         return (
             <div className="col-12 pb-2 my-3 uutispalkki h-50 px-3 pt-3">
-                <strong>Valitse jokin maanjäristyskartalta</strong>
+                <strong>{t('choose')}</strong>
             </div>
         );
     } else {

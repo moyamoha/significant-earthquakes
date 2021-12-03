@@ -5,10 +5,11 @@
 #main {
   height: 100vh;
 }
-table{
-  
-  
+
+.dropdown{
+ float: right;
 }
+
 h3, table tr:nth-of-type(odd) {
   background-color: #faf8f8;
 }
