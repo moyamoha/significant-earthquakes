@@ -97,9 +97,6 @@ export default function Uutiset({ quake, saaHakea, setSaaHakea }) {
                       <p className="card-text">
                         Use the arrows to cycle through news
                       </p>
-                      <a style={{ textDecoration: "none" }} href="">
-                        Link
-                      </a>
                     </div>
                   </div>
                 </div>

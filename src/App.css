@@ -1,32 +1,33 @@
-* {
-  font-family: 'Roboto', sans-serif;
-}
-
 #main {
   height: 100vh;
 }
-table{
-  
-  
-}
-h3, table tr:nth-of-type(odd) {
-  background-color: #faf8f8;
-}
-h3, th, td {
-  padding: 5px;
+.kentta {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
   border-bottom: 1px solid #dddddd;
+}
+
+#tiedot {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  height: 70vh;
+}
+.kentta:nth-of-type(odd) {
+  background-color: #faf8f8;
 }
 
 .maparea {
   background-color: white;
   border-radius: 0px;
 }
-.kortti, .map {
+.kortti,
+.map {
   border-radius: 10px;
-  transition: all .4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 .kortti:hover {
-  background-color: #ddd; 
+  background-color: #ccc;
 }
 
 .listapalkki {
@@ -38,14 +39,13 @@ h3, th, td {
 }
 
 .uutispalkki {
-  /*overflow-y: scroll;*/
+  overflow-y: scroll;
   padding-top: 10px;
   height: 85vh;
- /* border-left: 1px solid #28a745;*/
 }
 
 .linkki {
-  color:blue;
+  color: blue;
   cursor: pointer;
   text-decoration: none;
 }
