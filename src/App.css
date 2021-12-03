@@ -1,15 +1,9 @@
 #main {
   height: 100vh;
 }
-<<<<<<< HEAD
 
-.dropdown{
- float: right;
-}
 
-h3, table tr:nth-of-type(odd) {
-  background-color: #faf8f8;
-=======
+
 .kentta {
   display: flex;
   justify-content: space-between;
@@ -21,7 +15,6 @@ h3, table tr:nth-of-type(odd) {
   overflow-x: scroll;
   overflow-y: scroll;
   height: 70vh;
->>>>>>> f81beca3d732f454e7d6874eacbaf09e1b51a43d
 }
 .kentta:nth-of-type(odd) {
   background-color: #faf8f8;
