@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import  Uutinen  from './Uutinen';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next"; //use translation lisätty
 
 require('dotenv').config()
 
 let axios = require("axios").default;
 
 
-export default function Uutiset({quake, saaHakea, setSaaHakea}) {
+export default function Uutiset({quake, saaHakea, setSaaHakea}) {   
     let [tulokset, setTulokset] = useState(null);
     useEffect(() => {
         if (quake != null && 2==3) { // Toi on laitettu sitä varten, ettei haeta vaikka klikataankin markereista. Pitää poistaa lopullisessa tuotteessa 
