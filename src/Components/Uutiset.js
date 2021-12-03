@@ -8,8 +8,9 @@ let axios = require("axios").default;
 
 export default function Uutiset({ quake, saaHakea, setSaaHakea }) {
   let [tulokset, setTulokset] = useState(null);
+  let { t } = useTranslation()
   useEffect(() => {
-    if (quake != null && 2 == 3) {
+    if (quake != null && false) {
       // Toi on laitettu sitä varten, ettei haeta vaikka klikataankin markereista. Pitää poistaa lopullisessa tuotteessa
       const searchString =
         "earthquake+" +
@@ -49,7 +50,7 @@ export default function Uutiset({ quake, saaHakea, setSaaHakea }) {
   if (tulokset === null) {
     return (
       <div className="col-9 mt-1 uutispalkki h-50 px-1 pt-1">
-        <strong>Choose an earthquake to display news</strong>
+        <strong>{t('choose')}</strong>
       </div>
     );
   } else {
