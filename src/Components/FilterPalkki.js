@@ -71,10 +71,6 @@ const FilterPalkki = ({ setQuake, setChanged, filterObj, setFilterObj }) => {
 
     return (
         <div className="col-2 listapalkki ">
-
-            {/* Täällä on tarkoituksena luoda erilaisia suodatusvaihtoehtoja */}
-
-
             <div id="opt" >
                 <label className="h5 container p-0" >Year:</label>
                 <div><small>from...</small></div>
@@ -82,13 +78,11 @@ const FilterPalkki = ({ setQuake, setChanged, filterObj, setFilterObj }) => {
                 <div><small>to..</small></div>
                 <input id="maxYearLimit" type="number" placeholder="year" min="0" max="2021" onChange={(e) => { changeFilterObj(sminyear, e.target.value, loc, sminMagn, smaxMagn, sminDeaths, smaxDeaths) }} />
             </div>
-
             <div >
                 <label className="h5 container p-0 pt-3 ">Location:</label>
                 <input list="loclist" id="searchTerm" type="text" placeholder="Enter location name..." onChange={(e) => { changeFilterObj(sminyear, smaxyear, e.target.value, sminMagn, smaxMagn, sminDeaths, smaxDeaths) }} />
                 <datalist id="loclist">
                     {maat.map(item => <option key={item}> {item}</option>)}
-
                 </datalist>
             </div>
 
@@ -106,12 +100,6 @@ const FilterPalkki = ({ setQuake, setChanged, filterObj, setFilterObj }) => {
                 <div><small>to..</small></div>
                 <input placeholder="max" id="deathMax" type="number" min="0" max="10 000" onChange={(e) => { changeFilterObj(sminyear, smaxyear, loc, sminMagn, smaxMagn, sminDeaths, e.target.value) }} />
             </div>
-            {/* <ul>
-                maat {maat.length}:
-                {maat.map(item => <li onClick={(e) => changeFilterObj(e)}>{item}</li>)}
-          </ul> */}
-
-
         </div>
     );
 };

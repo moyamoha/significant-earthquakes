@@ -1,6 +1,5 @@
 import React from 'react';
 import MyMap from './MyMap';
-import Uutiset from './Uutiset';
 import Tiedot from './Tiedot';
 
 export default function MapArea( {setChanged ,changed, quake,filterObj, changeQuake}) {
