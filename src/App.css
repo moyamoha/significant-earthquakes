@@ -1,21 +1,34 @@
 #main {
   height: 100vh;
 }
-table{
-  
-  
-}
-h3, table tr:nth-of-type(odd) {
-  background-color: #faf8f8;
-}
-h3, th, td {
-  padding: 5px;
+.kentta{
+  overflow-x : auto;
+  overflow-y : auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
   border-bottom: 1px solid #dddddd;
+  
+  
 }
+
+#tiedot{
+  overflow-x :scroll;
+  overflow-y : scroll;   
+  height: 63vh;
+}
+.kentta:nth-of-type(odd) {
+  background-color: #faf8f8;
+  
+
+}
+
 
 .maparea {
   background-color: white;
   border-radius: 0px;
+  
+   
 }
 .kortti, .map {
   border-radius: 10px;
