@@ -21,3 +21,25 @@ body {
     margin-top: 0;
     background-color: #ffc107;
 }
+
+.navbar-linkit {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    align-items: center;
+  }
+
+  
+  .lan {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color:#dddddd;
+    transition: all 0.3s linear;
+  }
+  
+  .lan:hover {
+    cursor: pointer;
+    color: white;
+    text-decoration: underline;
+  }
