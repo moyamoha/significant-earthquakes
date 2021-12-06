@@ -34,8 +34,7 @@ function MyMap({ changed, setChanged, filterObj, setCurrentQuake }) {
       return true;
     } else {
       //
-      //console.log(item.properties.intensity)
-
+      
       return (
         (item.properties.country === filterObj.country ||
           filterObj.country === "") &&
@@ -52,8 +51,6 @@ function MyMap({ changed, setChanged, filterObj, setCurrentQuake }) {
         (item.properties.deaths >= filterObj.mindeath ||
           filterObj.mindeath === "")
       );
-
-      //item.properties.year >= filterObj.year
     }
   });
 
