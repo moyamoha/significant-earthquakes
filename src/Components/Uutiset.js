@@ -10,7 +10,7 @@ export default function Uutiset({ quake, saaHakea, setSaaHakea }) {
   let [tulokset, setTulokset] = useState(null);
   let { t } = useTranslation()
   useEffect(() => {
-    if (quake != null && false) {
+    if (quake != null && saaHakea) {
       // Toi on laitettu sitä varten, ettei haeta vaikka klikataankin markereista. Pitää poistaa lopullisessa tuotteessa
       const searchString =
         "earthquake+" +
