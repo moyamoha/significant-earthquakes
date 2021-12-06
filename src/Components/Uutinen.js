@@ -14,7 +14,7 @@ export default function Uutinen(props) {
             <div className="card-body">
                 <h5 className="card-title">{props.text}</h5>
                 <p className="card-text">{props.snippet}</p>
-                <a style={{textDecoration: 'none'}} onMouseEnter={handleHover} onMouseLeave={handleUnHover} href={props.link}>{props.linktext}</a>
+                <a style={{textDecoration: 'none'}} onMouseEnter={handleHover} onMouseLeave={handleUnHover} href={props.link} target="_blank">{props.linktext}</a>
             </div>
         </div>
     );
