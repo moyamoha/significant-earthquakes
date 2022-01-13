@@ -1,49 +1,84 @@
-#main {
+.App {
+  width: 100%;
   height: 100vh;
-}
-
-.kentta {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 10px;
-  border-bottom: 1px solid #dddddd;
-}
-
-#tiedot {
-  overflow-x: scroll;
-  overflow-y: scroll;
-  height: 70vh;
-}
-.kentta:nth-of-type(odd) {
-  background-color: #faf8f8;
+  position: relative;
+  overflow-y: hidden;
 }
 
 .maparea {
   background-color: white;
-  border-radius: 0px;
+  width:100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
-.kortti,
-.map {
-  border-radius: 10px;
+
+.kortti, .map {
   transition: all 0.4s ease-in-out;
 }
+
 .kortti:hover {
   background-color: #ccc;
 }
 
-.listapalkki {
-  overflow-y: scroll;
+.kortti {
+  width: 600px !important;
 }
 
-.listapalkki input {
+.filterpalkki {
+  position: absolute;
+  width: 22.5%;
+  z-index: 500;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0.1rem;
+  padding: 10px;
+  display: flex;
+  transition: all 0.4s linear;
+}
+
+#opener {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filterpalkki * {
+  background-color: rgb(41, 39, 39);
+  color: white;
+}
+
+.filterpalkki input {
   width: 100%;
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
 .uutispalkki {
-  overflow-y: scroll;
   padding-top: 10px;
-  height: 85vh;
+  background-color: inherit;
+  color: black;
+  position: absolute;
+  z-index: 500;
+  height: 200px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transition: all 0.4s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+#newsCarousel{
+  width: 600px !important;
+  margin: 0.5rem;
+}
+
 
 .linkki {
   color: blue;

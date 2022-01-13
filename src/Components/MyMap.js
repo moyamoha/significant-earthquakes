@@ -103,14 +103,16 @@ function MyMap({ changed, setChanged, filterObj, setCurrentQuake }) {
     return null;
   }
 
+  console.log(document.body.clientHeight)
+
   return (
-    <div className="px-0 mt-0 col-9">
+    <div style={{height: "100%"}}>
       <MapContainer
         worldCopyJump="true"
-        className="map col-9 w-100"
+        className="map w-100 h-100"
         center={position}
         zoom={changed ? 2 : zoom}
-        style={{ height: "500px" }}
+        style={{ height: `${document.body.clientHeight}px`, boxSizing:"border-box" }}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright%22%3EOpenStreetMap</a> contributors'

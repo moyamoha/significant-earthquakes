@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import  Uutinen  from './Uutinen';
-import { useTranslation } from "react-i18next"; //use translation lisätty
 
 require("dotenv").config();
 
@@ -8,7 +7,6 @@ let axios = require("axios").default;
 
 export default function Uutiset({ quake, saaHakea, setSaaHakea }) {
   let [tulokset, setTulokset] = useState(null);
-  let { t } = useTranslation()
   useEffect(() => {
     if (quake != null && saaHakea) {
       // Toi on laitettu sitä varten, ettei haeta vaikka klikataankin markereista. Pitää poistaa lopullisessa tuotteessa
@@ -49,21 +47,12 @@ export default function Uutiset({ quake, saaHakea, setSaaHakea }) {
 
   if (tulokset === null) {
     return (
-      <div className="col-9 mt-1 uutispalkki h-50 px-1 pt-1">
-        <strong>{t('choose')}</strong>
+      <div className="mt-1 uutispalkki px-1 pt-1" style={{bottom: "-205px"}} >
       </div>
     );
   } else {
     return (
-      <>
-        <div class="container px-0 mx-0">
-          <div class="row">
-            {/* news-teksti vasempaan yläkulmaan */}
-            <div class="col-7">
-              <h3 class="mt-2">News</h3>
-            </div>
-            {/* napit oikealle ylös, nappien linkki on index.html:ssä awesome css */}
-            <div class="col-2 text-right">
+      <div className='uutispalkki' style={{bottom: "0"}}>
               <a
                 class="btn btn-secondary mt-2 mr-1"
                 href="#newsCarousel"
@@ -72,19 +61,7 @@ export default function Uutiset({ quake, saaHakea, setSaaHakea }) {
               >
                 <i class="fa fa-arrow-left"></i>
               </a>
-              <a
-                class="btn btn-secondary mt-2 mr-1 text-right"
-                href="#newsCarousel"
-                role="button"
-                data-bs-slide="next"
-              >
-                <i class="fa fa-arrow-right"></i>
-              </a>
-            </div>
-            {/*carousel, mapataan jokainen uutinen omaksi esineeksi siihen */}
-          </div>
 
-          <div className="col-9 mt-1 uutispalkki h-50 px-1 pt-1">
             <div
               id="newsCarousel"
               class="carousel slide"
@@ -105,21 +82,27 @@ export default function Uutiset({ quake, saaHakea, setSaaHakea }) {
 
                 {tulokset.results.map((uut) => (
                   <div class="carousel-item">
-                    {" "}
                     <Uutinen
                       key={uut.title}
                       text={uut.title}
                       snippet={uut.description}
                       link={uut.link}
                       linktext="Link"
-                    ></Uutinen>{" "}
+                      setTulokset={setTulokset}
+                    ></Uutinen>
                   </div>
                 ))}
               </div>
             </div>
+            <a
+                class="btn btn-secondary mt-2 mr-1 text-right"
+                href="#newsCarousel"
+                role="button"
+                data-bs-slide="next"
+              >
+                <i class="fa fa-arrow-right"></i>
+              </a>
           </div>
-        </div>
-      </>
     );
   }
 }

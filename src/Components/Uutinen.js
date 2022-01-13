@@ -2,19 +2,12 @@ import React from 'react';
 
 export default function Uutinen(props) {
 
-    function handleUnHover(e) {
-        e.target.style.letterSpacing = "1px";
-    }
-    function handleHover(e) {
-        e.target.style.letterSpacing = "2px"
-    }
-
     return (
         <div className="card mb-2 kortti border border-warning d-block">
             <div className="card-body">
-                <h5 className="card-title">{props.text}</h5>
+                <h5 className="card-title"><a href={props.link} target="_blank" rel='norefferer'>{props.text}</a></h5>
                 <p className="card-text">{props.snippet}</p>
-                <a style={{textDecoration: 'none'}} onMouseEnter={handleHover} onMouseLeave={handleUnHover} href={props.link} target="_blank" rel="norefferer">{props.linktext}</a>
+                <span style={{"textDecoration": "underline", color:"blue", "cursor":"pointer"}} onClick={() => props.setTulokset(null) }>Hide</span>
             </div>
         </div>
     );
