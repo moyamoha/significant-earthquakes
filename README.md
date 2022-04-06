@@ -18,4 +18,4 @@ Projekti on lisenssoitu MIT lisenssillä. Tämä tarkoittaa sitä, että saat k�
 tarkoituksiin. Tarkemmat lisenssitiedot löytyy License nimisestä tiedostosta koodivaraston juurikansiosta master haarasta.
 
 Meihin yhteyttä?
-Jos haluat kuulla lisää lähetä sähköpostiviesti osoitteelle **salimiyahya549@gmail.com**
+Jos haluat tietää lisää lähetä sähköpostiviesti osoitteelle **salimiyahya549@gmail.com**
